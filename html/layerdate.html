@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<!-- Mirrored from www.zi-han.net/theme/hplus/layerdate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:43 GMT -->
 
 <head>
     <meta charset="utf-8">
@@ -197,8 +196,18 @@ laydate.reset();    //重设日历控件坐标，一般用于页面dom结构改�
     <script src="js/plugins/layer/laydate/laydate.js"></script>
     <script>
     laydate({ elem: "#hello", event: "focus" });
-    var start = { elem: "#start", format: "YYYY/MM/DD hh:mm:ss", min: laydate.now(), max: "2099-06-16 23:59:59", istime: true, istoday: false, choose: function(datas) { end.min = datas;
-            end.start = datas } };
+    var start = {
+        elem: "#start",
+        format: "YYYY/MM/DD hh:mm:ss",
+        min: laydate.now(),
+        max: "2099-06-16 23:59:59",
+        istime: true,
+        istoday: false,
+        choose: function(datas) {
+            end.min = datas;
+            end.start = datas
+        }
+    };
     var end = { elem: "#end", format: "YYYY/MM/DD hh:mm:ss", min: laydate.now(), max: "2099-06-16 23:59:59", istime: true, istoday: false, choose: function(datas) { start.max = datas } };
     laydate(start);
     laydate(end);
