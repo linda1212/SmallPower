@@ -1,8 +1,30 @@
+function loadjscssfile(filename, filetype)
+{
+    var fileref;
+
+    if (filetype=="css")
+    {
+        fileref=document.createElement("link");
+        fileref.setAttribute("rel", "stylesheet");
+        fileref.setAttribute("type", "text/css");
+        fileref.setAttribute("href", filename);
+
+    } else if(filetype=="icon") {
+        fileref=document.createElement("link");
+        fileref.setAttribute("rel", "shortcut icon");
+        fileref.setAttribute("href", filename);
+    }
+    if (typeof fileref!="undefined")
+        document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+
 var baseurl = "css";
 
-document.write("<link rel=\"shortcut icon\" href=\"favicon.ico\"></link>");
-document.write("<link rel=\"stylesheet\" href=\"" + baseurl + "\/font-awesome.min93e3.css\"></link>");
-document.write("<link rel=\"stylesheet\" href=\"" + baseurl + "\/animate.min.css\"></link>");
-document.write("<link rel=\"stylesheet\" href=\"" + baseurl + "\/style.min862f.css\"></link>");
-document.write("<link rel=\"stylesheet\" href=\"" + baseurl + "\/plugins/dataTables/dataTables.bootstrap.css\"></link>");
-document.write("<link rel=\"stylesheet\" href=\"" + baseurl + "\/plugins\/treeview\/bootstrap-treeview.css\"></link>");
+loadjscssfile(baseurl + "favicon.ico", "icon");
+loadjscssfile(baseurl + "\/font-awesome.min93e3.css", "css");
+loadjscssfile(baseurl + "\/animate.min.css", "css");
+loadjscssfile(baseurl + "\/style.min862f.css", "css");
+loadjscssfile(baseurl + "\/plugins/dataTables/dataTables.bootstrap.css", "css");
+loadjscssfile(baseurl + "\/plugins\/treeview\/bootstrap-treeview.css", "css");
+
+

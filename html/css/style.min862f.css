@@ -7377,9 +7377,7 @@ body.skin-3 {
     }
 }
 
-
-/*×ÔÑĞ»¯¿ªÊ¼*/
-
+// è‡ªç ”åŒ–ç»“ï¿½?
 .ci_search_input {
     min-width: 160px !important;
     max-width: 180px !important;
@@ -7462,13 +7460,4 @@ body.skin-3 {
     max-width: 200px;
 }
 
-#cpm_table_tr {
-    background: red;
-}
-
-#redTable {
-    color: red;
-}
-
-
-/*×ÔÑĞ»¯½áÊø*/
+/*è‡ªç ”åŒ–ç»“æŸ*/

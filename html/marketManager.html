@@ -1,159 +1,119 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--360浏览器优先以webkit内核解析-->
-
     <title>太谷售电一体化平台 —— 交易市场管理</title>
     <meta name="keywords" content="售电，售电平台，售电一体化平台，一体化平台">
     <meta name="description" content="太谷电力是江苏首个售电一体化平台">
-
     <link rel="shortcut icon" href="favicon.ico">
     <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
     <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
-
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/style.min862f.css?v=4.1.0" rel="stylesheet">
-
     <!-- Data Tables -->
     <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-
     <!--tree-->
     <link href="css/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
-
-    <!--自研-->
-    <link href="css/indept/main.css" rel="stylesheet">
-
 </head>
 
 <body class="gray-bg">
-<div class="row  border-bottom white-bg dashboard-header">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>交易市场管理</h5>
-
-            <div class="col-sm-12">
-                <div class="ibox-tools">
-                    <a class="collapse-link">
+    <div class="row  border-bottom white-bg dashboard-header">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>交易市场管理</h5>
+                <div class="col-sm-12">
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
                         <i class="fa fa-chevron-up"></i>
                     </a>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="ibox-content">
-                        <div class="row ci_row_one">
-                            <form role="form" class="form-inline">
-                                <div class="form-group ">
-                                    <input type="input" placeholder="名称" class="form-control">
-                                </div>
-                                <div class="form-group ">
-                                    <select class="form-control oci_select" name="" data-placeholder="市场成员类型"></select>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control oci_select" name="" data-placeholde="交易市场"></select>
-                                </div>
-
-                                <button class="btn btn-white ci_btn_margin_bottom0" type="button">查询</button>
-                                <button class="btn btn-white ci_btn_margin_bottom0" type="button">增加</button>
-                                <button class="btn btn-white ci_btn_margin_bottom0" type="button">删除</button>
-                                <button class="btn btn-white ci_btn_margin_bottom0" type="button">编辑</button>
-                                <button class="btn btn-white ci_btn_margin_bottom0" type="button">导出</button>
-                            </form>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox-content">
+                            <div class="row ci_row_one">
+                                <form role="form" class="form-inline">
+                                    <div class="form-group ">
+                                        <input type="input" placeholder="名称" class="form-control">
+                                    </div>
+                                    <div class="form-group ">
+                                        <select class="form-control oci_select" name="" data-placeholder="市场成员类型"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <select class="form-control oci_select" name="" data-placeholde="交易市场"></select>
+                                    </div>
+                                    <button class="btn btn-white ci_btn_margin_bottom0" type="button">查询</button>
+                                    <button class="btn btn-white ci_btn_margin_bottom0" type="button">增加</button>
+                                    <button class="btn btn-white ci_btn_margin_bottom0" type="button">删除</button>
+                                    <button class="btn btn-white ci_btn_margin_bottom0" type="button">编辑</button>
+                                    <button class="btn btn-white ci_btn_margin_bottom0" type="button">导出</button>
+                                </form>
+                            </div>
+                            <table class="table table-striped table-bordered table-hover dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>交易世行UUID</th>
+                                        <th>市场编码</th>
+                                        <th>上级市场编号</th>
+                                        <th>市场级别</th>
+                                        <th>市场名称</th>
+                                        <th>市场补充说明</th>
+                                        <th>生效时间</th>
+                                        <th>失效时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>91812</td>
+                                        <td>83112</td>
+                                        <td>3</td>
+                                        <td>国网总部</td>
+                                        <td>无</td>
+                                        <td>2017-08-11</td>
+                                        <td>2020-08-11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>96813</td>
+                                        <td>93112</td>
+                                        <td>3</td>
+                                        <td>国网江苏电力</td>
+                                        <td>无</td>
+                                        <td>2014-08-11</td>
+                                        <td>2018-08-11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>96813</td>
+                                        <td>93112</td>
+                                        <td>3</td>
+                                        <td>国网苏州电力</td>
+                                        <td>无</td>
+                                        <td>2014-08-11</td>
+                                        <td>2018-08-11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>96813</td>
+                                        <td>93112</td>
+                                        <td>3</td>
+                                        <td>国网南京电力</td>
+                                        <td>无</td>
+                                        <td>2014-08-11</td>
+                                        <td>2018-08-11</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
-                            <thead>
-                            <tr>
-                                <th>交易世行UUID</th>
-                                <th>市场编码</th>
-                                <th>上级市场编号</th>
-                                <th>市场级别</th>
-                                <th>市场名称</th>
-                                <th>市场补充说明</th>
-                                <th>生效时间</th>
-                                <th>失效时间</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>91812</td>
-                                <td>83112</td>
-                                <td>3</td>
-                                <td>国网总部</td>
-                                <td>无</td>
-                                <td>2017-08-11</td>
-                                <td>2020-08-11</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>96813</td>
-                                <td>93112</td>
-                                <td>3</td>
-                                <td>国网江苏电力</td>
-                                <td>无</td>
-                                <td>2014-08-11</td>
-                                <td>2018-08-11</td>
-                            </tr><tr>
-                                <td>11</td>
-                                <td>96813</td>
-                                <td>93112</td>
-                                <td>3</td>
-                                <td>国网苏州电力</td>
-                                <td>无</td>
-                                <td>2014-08-11</td>
-                                <td>2018-08-11</td>
-                            </tr><tr>
-                                <td>12</td>
-                                <td>96813</td>
-                                <td>93112</td>
-                                <td>3</td>
-                                <td>国网南京电力</td>
-                                <td>无</td>
-                                <td>2014-08-11</td>
-                                <td>2018-08-11</td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script src="js/jquery.min.js?v=2.1.4"></script>
-<script src="js/bootstrap.min.js?v=3.3.6"></script>
-<script src="js/plugins/layer/layer.min.js"></script>
-<script src="js/content.min.js"></script>
-<script src="js/welcome.min.js"></script>
-
-<script src="js/plugins/jeditable/jquery.jeditable.js"></script>
-<script src="js/plugins/dataTables/jquery.dataTables.js"></script>
-<script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-
-<!--tree-->
-<script src="js/plugins/treeview/bootstrap-treeview.js"></script>
-<script src="js/demo/treeview-demo.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        $(".dataTables-example").dataTable();
-        var oTable = $("#editable").dataTable();
-        oTable.$("td").editable("http://www.zi-han.net/theme/example_ajax.php", {
-            "callback": function (sValue, y) {
-                var aPos = oTable.fnGetPosition(this);
-                oTable.fnUpdate(sValue, aPos[0], aPos[1])
-            }, "submitdata": function (value, settings) {
-                return {"row_id": this.parentNode.getAttribute("id"), "column": oTable.fnGetPosition(this)[2]}
-            }, "width": "90%", "height": "100%"
-        })
-    });
-    function fnClickAddRow() {
-        $("#editable").dataTable().fnAddData(["Custom row", "New row", "New row", "New row", "New row"])
-    }
-</script>
+    <script src="js/import.js"></script>
 </body>
 
 </html>

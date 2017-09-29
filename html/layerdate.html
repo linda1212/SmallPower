@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html>
-
-
 <!-- Mirrored from www.zi-han.net/theme/hplus/layerdate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:43 GMT -->
-<head>
 
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <title>太谷售电一体化平台 - 日期选择器layerDate</title>
     <meta name="keywords" content="售电，售电平台，售电一体化平台，一体化平台">
     <meta name="description" content="太谷电力是江苏首个售电一体化平台">
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
     <link href="css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/animate.min.css" rel="stylesheet">
@@ -75,7 +71,6 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
-
                                 <form class="form-horizontal m-t">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">普通：</label>
@@ -201,11 +196,15 @@ laydate.reset();    //重设日历控件坐标，一般用于页面dom结构改�
     <script src="js/content.min.js?v=1.0.0"></script>
     <script src="js/plugins/layer/laydate/laydate.js"></script>
     <script>
-        laydate({elem:"#hello",event:"focus"});var start={elem:"#start",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){end.min=datas;end.start=datas}};var end={elem:"#end",format:"YYYY/MM/DD hh:mm:ss",min:laydate.now(),max:"2099-06-16 23:59:59",istime:true,istoday:false,choose:function(datas){start.max=datas}};laydate(start);laydate(end);
+    laydate({ elem: "#hello", event: "focus" });
+    var start = { elem: "#start", format: "YYYY/MM/DD hh:mm:ss", min: laydate.now(), max: "2099-06-16 23:59:59", istime: true, istoday: false, choose: function(datas) { end.min = datas;
+            end.start = datas } };
+    var end = { elem: "#end", format: "YYYY/MM/DD hh:mm:ss", min: laydate.now(), max: "2099-06-16 23:59:59", istime: true, istoday: false, choose: function(datas) { start.max = datas } };
+    laydate(start);
+    laydate(end);
     </script>
     <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
 </body>
-
-
 <!-- Mirrored from www.zi-han.net/theme/hplus/layerdate.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:44 GMT -->
+
 </html>
