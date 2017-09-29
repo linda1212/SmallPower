@@ -270,13 +270,15 @@
     <script src="js/plugins/pace/pace.min.js"></script>
     <script src="js/md5.js"></script>
     <script data-main="app/boot.js" src="js/require.js"></script>
+    <script src="js/testvue.js"></script>
     <script>
     $(function() {
+        var name = window.module.name;
 
         var app = new Vue({
             el: '#i_admin_id',
             data: {
-                admin_name: '管理员'
+                admin_name: name
             }
         });
 
