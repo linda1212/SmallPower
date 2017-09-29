@@ -16,7 +16,7 @@ $(function () {
 
     console.log("categorypriceManager.js load end");
 
-    $('#openAccount_table').DataTable({
+    /*$('#openAccount_table').DataTable({
         dom: "Tfrtip",
         ajax: "assets/php/table.admins.php",
         columns: [
@@ -39,6 +39,6 @@ $(function () {
                 {sExtends: "editor_remove", editor: editor}
             ]
         }
-    });
+    });*/
 
 });
