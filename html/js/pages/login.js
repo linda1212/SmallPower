@@ -1,15 +1,15 @@
-(function() {
+(function () {
 
     function loginSuccessHandler(resp) {
-        console.log('[login.js][loginSuccessHandler][resp = ]');
+        console.log('[login.js][loginSuccessHandler][enter]');
+
+        eBase.gotoHomePage();
     }
 
     function loginFailedHandler(resp) {
-        console.log('[login.js][loginFailedHandler][resp = ]');
-    }
+        console.log('[login.js][loginFailedHandler][enter]');
 
-    function gotoPage(){
-        console.log('[login.js][gotoPage][enter]');
+        eBase.gotoLoginPage();
     }
 
     function sendLoginReq() {
@@ -26,6 +26,14 @@
 
         console.log('[login.js][sendLoginReq][begin send request]');
 
+        if ('admin' === username && '1' === password) {
+            loginSuccessHandler()
+        } else {
+            loginFailedHandler();
+        }
+
+        return;
+
         $.ajax({
             url: 'login',
             username: username,
@@ -37,7 +45,7 @@
         });
     }
 
-    $('#submitBtn').click(function () {
+    $('#loginBtn').click(function () {
         sendLoginReq();
     });
 

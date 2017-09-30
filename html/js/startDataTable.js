@@ -1,7 +1,8 @@
+/*
 $(function () {
     $(".dataTables-example ").dataTable();
     var oTable = $("#editable ").dataTable();
-    oTable.$("td ").editable("http://www.zi-han.net/theme/example_ajax.php ", {
+    oTable.$("td ").editable("http://www.zi-han.net/theme/example_ajax.php", {
         "callback ": function (sValue, y) {
             var aPos = oTable.fnGetPosition(this);
             oTable.fnUpdate(sValue, aPos[0], aPos[1])
@@ -16,4 +17,4 @@ $(function () {
 
 function fnClickAddRow() {
     $("#editable ").dataTable().fnAddData(["Custom row ", "New row ", "New row ", "New row ", "New row "])
-}
+}*/
