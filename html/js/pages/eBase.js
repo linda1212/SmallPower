@@ -2,23 +2,13 @@
 
     window.eBase = {
 
-            static: function () {
+        gotoLoginPage: function () {
+            console.log('[eBase.js][gotoLoginPage][enter]');
+        },
+        gotoHomePage: function () {
+            console.log('[eBase.js][gotoHomePage][enter]');
+        }
 
-               /* var dtd = $.Deferred();
-
-                $.ajax({
-                    url: "test.html",
-                    success: function () {
-                        console.log("success");
-                    },
-                    fail: function () {
-                        console.log("fail");
-                    }
-                });*/
-
-                console.log("[eBase][static]");
-            }
-
-        } || {};
+    };
 
 })($);
