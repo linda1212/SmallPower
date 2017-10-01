@@ -9,101 +9,100 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body class="gray-bg ">
-    <div class="row border-bottom white-bg dashboard-header ">
-        <div class="ibox float-e-margins ">
-            <div class="ibox-title ">
+<body class="gray-bg">
+    <div class="row border-bottom white-bg dashboard-header">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
                 <h5>输配电价管理</h5>
             </div>
             <!--end of ibox-title-->
-            <div class="ibox-content ">
-                <div class="row ">
-                    <div class="col-sm-2 ">
-                        <div class="row ">
-                            <form role="form " class="form-inline ">
-                                <div class="form-group ">
-                                    <input type="input " placeholder="请输入用户名 " id="exampleInputEmail2 " class="form-control ci_search_input ">
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="row">
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <input type="text" placeholder="请输入用户名" id="exampleInputEmail2" class="form-control ci_search_input">
                                 </div>
-                                <button class="btn btn-white ci_search_btn " type="submit ">查询</button>
+                                <button class="btn btn-white ci_search_btn" type="button">查询</button>
                             </form>
                         </div>
-                        <div id="cpm_area_tree " class="test "></div>
+                        <div id="tpm_area_tree"></div>
                     </div>
-                    <div class="col-sm-10 ">
-                        <div class="tabs-container ">
-                            <ul class="nav nav-tabs ">
-                                <li class="active "><a data-toggle="tab " href="#tab-1 " aria-expanded="false ">输配电度电价</a>
-                                </li>
-                                <li class=" "><a data-toggle="tab " href="#tab-2 " aria-expanded="true ">输配基本电价</a></li>
-                                <li class=" "><a data-toggle="tab " href="#tab-3 " aria-expanded="true ">历史记录</a></li>
+                    <div class="col-sm-10">
+                        <div class="tabs-container">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="false">输配电度电价</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-2" aria-expanded="true">输配基本电价</a></li>
+                                <li class=""><a data-toggle="tab" href="#tab-3" aria-expanded="true">历史记录</a></li>
                             </ul>
-                            <div class="tab-content ">
-                                <div id="tab-1 " class="tab-pane active ">
-                                    <div class="panel-body ">
-                                        <div class="row ">
-                                            <form role="form " class="form-horizontal m-t ">
-                                                <div class="row cm_top_row ">
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">电价编码：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form role="form" class="form-horizontal m-t">
+                                                <div class="row cm_top_row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">电价编码：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name="name111"></select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">地理区域：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row ">
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">电价类型：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">电压等级：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">地理区域：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name="name222"></select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row cpm_btn_row ">
-                                                    <form role="form " class="form-inline ">
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">电价类型：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name=""></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">电压等级：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name="name333"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row cpm_btn_row">
+                                                    <form role="form" class="form-inline">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             查询
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             新建电价
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             删除
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             配置价格
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             配置代征费
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             导出
                                                         </button>
                                                     </form>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="ibox-content m-t ">
-                                            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                                        <div class="ibox-content m-t">
+                                            <table class="table table-striped table-bordered table-hover dataTables-example">
                                                 <thead>
                                                     <tr>
                                                         <th>电价编码</th>
@@ -121,34 +120,34 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="gradeX ">
+                                                    <tr class="gradeX">
                                                         <td>161122-372</td>
                                                         <td>商业电度电价</td>
                                                         <td>江苏</td>
-                                                        <td class="center ">有效</td>
-                                                        <td class="center ">目录电价</td>
-                                                        <td class="center ">李经理</td>
-                                                        <td class="center ">商业电度电价</td>
-                                                        <td class="center ">不满1KV</td>
-                                                        <td class="center ">2016-09-11</td>
-                                                        <td class="center ">2020-09-11</td>
-                                                        <td class="center ">江苏地区电价</td>
-                                                        <td class="center ">1.0</td>
+                                                        <td class="center">有效</td>
+                                                        <td class="center">目录电价</td>
+                                                        <td class="center">李经理</td>
+                                                        <td class="center">商业电度电价</td>
+                                                        <td class="center">不满1KV</td>
+                                                        <td class="center">2016-09-11</td>
+                                                        <td class="center">2020-09-11</td>
+                                                        <td class="center">江苏地区电价</td>
+                                                        <td class="center">1.0</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="ibox-content ">
-                                            <div class="tabs-container ">
-                                                <ul class="nav nav-tabs ">
-                                                    <li class="active "><a data-toggle="tab " href="#sub-tab-1 " aria-expanded="false ">详细电价</a></li>
-                                                    <li class=" "><a data-toggle="tab " href="#sub-tab-2 " aria-expanded="true ">代征费用</a></li>
+                                        <div class="ibox-content">
+                                            <div class="tabs-container">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a data-toggle="tab" href="#sub-tab-1" aria-expanded="false">详细电价</a></li>
+                                                    <li class=""><a data-toggle="tab" href="#sub-tab-2" aria-expanded="true">代征费用</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="tab-content ">
-                                                <div id="sub-tab-1 " class="tab-pane active ">
-                                                    <div class="panel-body ">
-                                                        <table class="table table-striped table-bordered table-hover dataTables-example ">
+                                            <div class="tab-content">
+                                                <div id="sub-tab-1" class="tab-pane active">
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
                                                             <thead>
                                                                 <tr>
                                                                     <th>阶梯序号</th>
@@ -166,7 +165,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr class="gradeX ">
+                                                                <tr class="gradeX">
                                                                     <td></td>
                                                                     <td></td>
                                                                     <td></td>
@@ -184,9 +183,9 @@
                                                         </table>
                                                     </div>
                                                 </div>
-                                                <div id="sub-tab-2 " class="tab-pane ">
-                                                    <div class="panel-body ">
-                                                        <table class="table table-striped table-bordered table-hover dataTables-example ">
+                                                <div id="sub-tab-2" class="tab-pane">
+                                                    <div class="panel-body">
+                                                        <table class="table table-striped table-bordered table-hover dataTables-example">
                                                             <thead>
                                                                 <tr>
                                                                     <th>#</th>
@@ -195,17 +194,17 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr class="gradeA ">
+                                                                <tr class="gradeA">
                                                                     <td></td>
                                                                     <td>水库移民后期扶持基金</td>
                                                                     <td>0.00088</td>
                                                                 </tr>
-                                                                <tr class="gradeB ">
+                                                                <tr class="gradeB">
                                                                     <td></td>
                                                                     <td>重大水利工程建设基金</td>
                                                                     <td>0.0007</td>
                                                                 </tr>
-                                                                <tr class="gradeC ">
+                                                                <tr class="gradeC">
                                                                     <td></td>
                                                                     <td>城市建设附加费</td>
                                                                     <td>0.0014</td>
@@ -218,51 +217,51 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="tab-2 " class="tab-pane ">
-                                    <div class="panel-body ">
-                                        <div class="row ">
-                                            <form role="form " class="form-horizontal m-t ">
-                                                <div class="row cm_top_row ">
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">电价码：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
+                                <div id="tab-2" class="tab-pane">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form role="form" class="form-horizontal m-t">
+                                                <div class="row cm_top_row">
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">电价码：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name="name444"></select>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4 ">
-                                                        <div class="form-group ">
-                                                            <label class="col-sm-3 control-label ">地理区域：</label>
-                                                            <div class="col-sm-9 ">
-                                                                <select class="form-control " name=" "></select>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 control-label">地理区域：</label>
+                                                            <div class="col-sm-9">
+                                                                <select class="form-control" name="name555"></select>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row cpm_btn_row ">
-                                                    <form role="form " class="form-inline ">
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                <div class="row cpm_btn_row">
+                                                    <form role="form" class="form-inline">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             查询
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             新增
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             删除
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             调价保存
                                                         </button>
-                                                        <button class="btn btn-white ci_btn_margin_bottom0 " type="button ">
+                                                        <button class="btn btn-white ci_btn_margin_bottom0" type="button">
                                                             导出
                                                         </button>
                                                     </form>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="ibox-content m-t ">
-                                            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                                        <div class="ibox-content m-t">
+                                            <table class="table table-striped table-bordered table-hover dataTables-example">
                                                 <thead>
                                                     <tr>
                                                         <th>电价码</th>
@@ -279,18 +278,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="gradeX ">
+                                                    <tr class="gradeX">
                                                         <td>161122-372</td>
                                                         <td>商业电度电价</td>
                                                         <td>江苏</td>
                                                         <td>商业电度电价不满1KV</td>
-                                                        <td class="center ">正常</td>
-                                                        <td class="center ">目录电价</td>
-                                                        <td class="center ">2.0</td>
-                                                        <td class="center ">1</td>
-                                                        <td class="center ">2016-09-11</td>
-                                                        <td class="center ">2020-09-11</td>
-                                                        <td class="center ">1.0</td>
+                                                        <td class="center">正常</td>
+                                                        <td class="center">目录电价</td>
+                                                        <td class="center">2.0</td>
+                                                        <td class="center">1</td>
+                                                        <td class="center">2016-09-11</td>
+                                                        <td class="center">2020-09-11</td>
+                                                        <td class="center">1.0</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -298,10 +297,10 @@
                                     </div>
                                     <!--panel body end-->
                                 </div>
-                                <div id="tab-3 " class="tab-pane ">
-                                    <div class="panel-body ">
-                                        <div class="ibox-content m-t ">
-                                            <table class="table table-striped table-bordered table-hover dataTables-example ">
+                                <div id="tab-3" class="tab-pane">
+                                    <div class="panel-body">
+                                        <div class="ibox-content m-t">
+                                            <table class="table table-striped table-bordered table-hover dataTables-example">
                                                 <thead>
                                                     <tr>
                                                         <th>电价编码</th>
