@@ -9,7 +9,9 @@ document.write("<script language=\"javascript\" src=\"" + baseurl + "\/plugins\/
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/plugins\/slimscroll\/jquery.slimscroll.min.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/plugins\/layer\/layer.min.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/plugins\/pace\/pace.min.js\"></script>");
+document.write("<script language=\"javascript\" src=\"" + baseurl + "\/plugins\/echarts\/echarts-all.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/demo\/treeview-demo.min.js\"></script>");
+document.write("<script language=\"javascript\" src=\"" + baseurl + "\/demo\/echarts-demo.min.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/startDataTable.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/hplus.min.js\"></script>");
 document.write("<script language=\"javascript\" src=\"" + baseurl + "\/contabs.min.js\"></script>");
