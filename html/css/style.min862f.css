@@ -7464,4 +7464,23 @@ body.skin-3 {
     display: none;
 }
 
+.layui-layer-btn button {
+    height: 28px;
+    line-height: 28px;
+    margin: 0 6px;
+    padding: 0 15px;
+    border: 1px solid #dedede;
+    background-color: #f1f1f1;
+    color: #333;
+    border-radius: 2px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    min-width: 100px;
+}
+
+.layui-layer-content {
+    padding: 20px 30px 20px 20px;
+}
+
 /*自研化结束*/

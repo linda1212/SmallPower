@@ -1,6 +1,8 @@
-(function () {
+(function ($) {
 
     window.eBase = {
+
+        isDebug:!0,
 
         gotoLoginPage: function () {
             console.log('[eBase.js][gotoLoginPage][enter]');
@@ -37,7 +39,7 @@
                 url: 'login',
                 username: username,
                 password: password
-            }).done(function (resp) {
+            }).success(function (resp) {
                 self.loginSuccessHandler(currentpage, resp);
             }).fail(function (resp) {
                 self.loginFailedHandler(currentpage, resp);
@@ -61,7 +63,28 @@
             } else {
                 this.gotoLoginPage();
             }
+        },
+
+        send: function (ajaxData, type) {
+
+            var _type = type || 'post';
+            var defaultParams = {
+                type: _type,
+                dataType: 'json'
+            };
+            var newParams = $.extend(defaultParams, ajaxData);
+            var dfd = $.Deferred();
+            $.ajax(newParams).success(function (resp) {
+                dfd.resolve(resp);
+            }).fail(function (resp) {
+                dfd.reject(resp);
+            });
+            return dfd;
+        },
+
+        debug:function(string){
+            this.isDebug && console.log(string);
         }
     };
 
-})($);
+})(jQuery);

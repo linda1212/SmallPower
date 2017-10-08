@@ -22,8 +22,22 @@ window.jsConfig = {
     }, {
         url: 'plugins/dataTables/dataTables.bootstrap.js'
     }, {
+        url: 'plugins/bootstrap-table/bootstrap-table.min.js'
+    },{
+        url: 'plugins/bootstrap-table/bootstrap-table-mobile.min.js'
+    },{
+        url: 'plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js'
+    }, {
+        url: '/demo/bootstrap-table-demo.min.js'
+    }, {
         url: 'startDataTable.js'
+    }, {
+        //layer
+        url: 'plugins/layer/layer.min.js'
+    }, {
+        url: 'demo/layer-demo.min.js'
     }],
+
     importJSFilesByList: function (list) {
         var self = this;
         for (var i = 0; i < list.length; i++) {

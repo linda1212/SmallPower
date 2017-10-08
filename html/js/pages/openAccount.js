@@ -1,80 +1,102 @@
 (function () {
+    function parserResp(resp) {
+        var list = resp.data;
+        for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            console.log(item.custom_id);
+            console.log(item.custom_name);
+            console.log(item.cusotm_sname);
+            console.log(item.custom_address);
+            console.log(item.custom_contact);
+            console.log(item.custom_tel);
+            console.log("-------------------");
+        }
 
-    function OpenAccount() {
+        bindingTable(resp.data);
     }
 
-    OpenAccount.prototype = {
-        test: function () {
-            console.log("this is test function");
-            eBase.static();
-        }
-    };
+    function bindingTable(list) {
+        $("#openAccountTable").bootstrapTable({
+            search: true,
+            pagination: true,
+            showRefresh: true,
+            showToggle: true,
+            showColumns: true,
+            data: list,
+            height: "600",
+            iconSize: "outline",
+            toolbar: "#exampleTableEventsToolbar",
+            icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
+        });
+    }
 
-    window.openAccount = new OpenAccount();
+    function addListeners() {
+        $("#openAccountTable").on("all.bs.table", function () {
+            console.log('all.bs.table click');
+        }).on("click-row.bs.table", function () {
+            console.log("Event:click-row.bs.table");
+        }).on("dbl-click-row.bs.table", function () {
+            console.log("Event:dbl-click-row.bs.table");
+        }).on("sort.bs.table", function () {
+            console.log("Event:sort.bs.table");
+        }).on("check.bs.table", function () {
+            console.log("Event:check.bs.table");
+        }).on("uncheck.bs.table", function () {
+            console.log("Event:uncheck.bs.table");
+        }).on("check-all.bs.table", function () {
+            console.log("Event:check-all.bs.table");
+        }).on("uncheck-all.bs.table", function () {
+            console.log("Event:uncheck-all.bs.table");
+        }).on("load-success.bs.table", function () {
+            console.log("Event:load-success.bs.table");
+        }).on("load-error.bs.table", function () {
+            console.log("Event:load-error.bs.table");
+        }).on("column-switch.bs.table", function () {
+            console.log("Event:column-switch.bs.table");
+        }).on("page-change.bs.table", function () {
+            console.log("Event:page-change.bs.table");
+        }).on("search.bs.table", function () {
+            console.log("Event:search.bs.table");
+        });
+    }
+
+    function addElmentsListener() {
+        $("openAccount_addBtn").click(function () {
+
+        });
+    }
+
+    function queryData(){
+        eBase.send({url: 'http://localhost:8080/Long/test'}).done(function (result) {
+            console.log('query data success');
+        }).fail(function (result) {
+            console.log('query data failed');
+        });
+    }
+
+    function addItem() {
+        eBase.send({url: 'http://localhost:8080/Long/test'}).done(function () {
+            console.log('add item success');
+        }).fail(function () {
+            console.log('add item failed');
+        });
+    }
+
+    function sendAjax() {
+        $.ajax({
+            type: 'get',
+            url: "http://localhost:8080/Long/test",
+            dataType: 'json'
+        }).success(function (resp) {
+            parserResp(resp);
+            console.log("返回成功");
+        }).fail(function (resp) {
+            console.log('返回失败');
+        }).done(function () {
+            console.log("done");
+        });
+    }
+
+    sendAjax();
+    addListeners();
 })();
-
-$(function () {
-    console.info("OpenAccount.js load end");
-
-    window.openAccount.test();
-
-    var params = {
-        id:"0001"
-    };
-
-    $('#openAccount_table').bootstrapTable({
-        url: '/TableStyle/GetOrder',         //请求后台的URL（*）
-        method: 'get',                      //请求方式（*）
-        //toolbar: '#toolbar',                //工具按钮用哪个容器
-        striped: true,                      //是否显示行间隔色
-        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
-        pagination: true,                   //是否显示分页（*）
-        sortable: false,                     //是否启用排序
-        sortOrder: "asc",                   //排序方式
-        queryParams: params,//传递参数（*）
-        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
-        pageNumber: 1,                       //初始化加载第一页，默认第一页
-        pageSize: 10,                       //每页的记录行数（*）
-        pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
-        search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
-        strictSearch: true,
-        showColumns: true,                  //是否显示所有的列
-        showRefresh: true,                  //是否显示刷新按钮
-        minimumCountColumns: 2,             //最少允许的列数
-        clickToSelect: true,                //是否启用点击选中行
-        height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-        uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
-        showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
-        cardView: false,                    //是否显示详细视图
-        detailView: false,                   //是否显示父子表
-        rowStyle: function (row, index) {
-            //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
-            /*var strclass = "";
-            if (row.ORDER_STATUS == "待排产") {
-                strclass = 'success';//还有一个active
-            }
-            else if (row.ORDER_STATUS == "已删除") {
-                strclass = 'danger';
-            }
-            else {
-                return {};
-            }
-            return {classes: strclass}*/
-        },
-        columns: [{
-            checkbox: true
-        }, {
-            field: 'ORDER_NO',
-            title: '订单编号'
-        }, {
-            field: 'ORDER_TYPE',
-            title: '订单类型'
-        }, {
-            field: 'ORDER_STATUS',
-            title: '订单状态'
-        }, {
-            field: 'REMARK',
-            title: '备注'
-        },]
-    });
-});
