@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太谷售电一体化平台 —— 首页</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>中国地图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div style="height:600px" id="echarts-map-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>折线图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-line-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>柱状图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-bar-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 hidden">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>散点图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-scatter-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>K线图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-k-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>饼状图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-pie-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>雷达图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-radar-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 hidden">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>和弦图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-chord-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>仪表盘</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-gauge-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 hidden">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>漏斗图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-funnel-chart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 hidden">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>力导向布局图</h5>
+
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="graph_flot.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="graph_flot.html#">选项1</a>
+                            </li>
+                            <li><a href="graph_flot.html#">选项2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="echarts" id="echarts-force-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--row start-->
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="widget style1 navy-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-center">
+                        <i class="fa fa-home fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">业务受理</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="openAccount.html" class="btn-link inline iLink"> 开户</a>|
+                    <a href="consultManager.html" class="btn-link inline iLink"> 咨询建议管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-right">
+                        <i class="fa fa-user fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">客户档案</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="customInfo.html" class="btn-link inline iLink"> 电力客户信息</a>|
+                    <a href="otherCustomInfo.html" class="btn-link inline iLink"> 其他市场信息</a>|
+                    <a href="generatorInfo.html" class="btn-link inline iLink"> 发电商信息</a>|
+                    <a href="marketManager.html" class="btn-link inline iLink"> 交易市场管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="widget style1 yellow-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-right">
+                        <i class="fa fa-file fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">售电合同</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="signContract.html" class="btn-link inline iLink"> 签订售电合同</a>|
+                    <a href="contractManager.html" class="btn-link inline iLink"> 售电合同管理</a>|
+                    <a href="contractTemplate.html" class="btn-link inline iLink"> 售电合同模板</a>|
+                    <a href="contractMonitorManager.html" class="btn-link inline iLink"> 售电合同日监测</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of first row-->
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="widget style1 deepskyblue-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-center">
+                        <i class="fa fa-file-text fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">购电合同</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="purchaseContractManager.html" class="btn-link inline iLink"> 购电合同管理</a>|
+                    <a href="purchaseTransactionInfo.html" class="btn-link inline iLink"> 购电交易信息管理</a>|
+                    <a href="purchaseContractTrack.html" class="btn-link inline iLink"> 购电合同执行跟踪</a>|
+                    <a href="purchaseSettleManager.html" class="btn-link inline iLink"> 购电结算管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="widget style1 blue-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-right">
+                        <i class="fa fa-cny fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">电价管理</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="packagePriceManager.html" class="btn-link inline iLink"> 套餐电价管理</a>|
+                    <a href="transPriceManager.html" class="btn-link inline iLink"> 输配电价管理</a>|
+                    <a href="collectPriceManager.html" class="btn-link inline iLink"> 代征电价管理</a>|
+                    <a href="priceParamsManager.html" class="btn-link inline iLink"> 电价参数管理</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="widget style1 darkmagenta-bg">
+                <div class="row">
+                    <div class="col-xs-3 text-right">
+                        <i class="fa fa-cc-visa fa-5x"></i>
+                    </div>
+                    <div class="col-xs-9">
+                        <h3 class="font-bold">售电结算</h3>
+                    </div>
+                </div>
+                <div class="ibox-content m-t no-bg iContent">
+                    <a href="monthlySettlement.html" class="btn-link inline iLink"> 月度结算任务管理</a>|
+                    <a href="monthlyContractSettlementQuery.html" class="btn-link inline iLink"> 月度结算数据查询</a>|
+                    <a href="meterReadingLedger.html" class="btn-link inline iLink"> 抄表台账管理</a>|
+                    <a href="salePlaceMananger.html" class="btn-link inline iLink"> 售电点管理</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--second row end-->
+</div>
+<!--<script src="js/import.js"></script>-->
+<script src="js/jquery.min.js?v=2.1.4"></script>
+<script src="js/bootstrap.min.js?v=3.3.6"></script>
+<script src="js/plugins/echarts/echarts-all.js"></script>
+<script src="js/demo/echarts-demo.min.js"></script>
+
+</body>
+
+</html>
