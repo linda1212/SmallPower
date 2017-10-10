@@ -9,25 +9,29 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body class="gray-bg">
-<div class="row  border-bottom white-bg dashboard-header">
+<body class="white-bg">
+<div class="row  white-bg dashboard-header">
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-12">
                 <!-- Example Events -->
                 <div class="example-wrap">
                     <h4 class="example-title">开户管理</h4>
+
                     <div class="example">
-                        <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
-                            <button id="openAccount_addBtn" data-table="openAccountTable" type="button" title="新增客户" class="btn btn-outline btn-default">
+                        <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
+                            <button id="openAccount_addBtn" data-table="openAccountTable" type="button" title="新增客户"
+                                    class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                                 <span>新增</span>
                             </button>
-                            <button id="openAccount_editBtn" data-table="openAccountTable" type="button" class="btn btn-outline btn-default">
+                            <button id="openAccount_editBtn" data-table="openAccountTable" type="button"
+                                    class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
                                 <span>编辑</span>
                             </button>
-                            <button id="openAccount_removeBtn" data-table="openAccountTable" type="button" title="删除客户" class="btn btn-outline btn-default">
+                            <button id="openAccount_removeBtn" data-table="openAccountTable" type="button" title="删除客户"
+                                    class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
                                 <span>删除</span>
                             </button>
@@ -54,8 +58,22 @@
 </div>
 
 <script src="js/import.js"></script>
-<!--<script src="js/pages/openAccount.js"></script>-->
-<script src="js/pages/openAccountController.js"></script>
+<script src="js/pages/CURDTable.js"></script>
+<script>
+
+    new cur({
+        t: "#openAccountTable",//操作表的ID
+        uuid: "CId",//主键
+        queryUrl: "js/demo/customer.json",
+        addUrl: "http://localhost:8080/Long/add",
+        delUrl: "http://localhost:8080/Long/del",
+        toolbar: "exampleTableEventsToolbar",
+        addBtn: "#openAccount_addBtn",
+        editBtn: "#openAccount_editBtn",
+        delBtn: "#openAccount_removeBtn"
+    }).init();
+
+</script>
 </body>
 
 </html>

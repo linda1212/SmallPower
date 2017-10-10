@@ -2,10 +2,10 @@
 
     "use strict"
 
-    function OpenAccountController(value) {
+    function CURDTable(value) {
 
         this.cfg = $.extend(value, {
-            t: "#openAccountTable",//操作表的ID
+            /*t: "#openAccountTable",//操作表的ID
             uuid: "CId",//主键
             queryUrl: "js/demo/customer.json",
             addUrl: "http://localhost:8080/Long/add",
@@ -13,19 +13,19 @@
             toolbar:"exampleTableEventsToolbar",
             addBtn:"#openAccount_addBtn",
             editBtn:"#openAccount_editBtn",
-            delBtn:"#openAccount_removeBtn"
+            delBtn:"#openAccount_removeBtn"*/
         });
 
-        eBase.debug('[openAccountController.js][OpenAccountController][构造器]');
+        eBase.debug('[CURDTable.js][CURDTable][构造器]');
     }
 
-    OpenAccountController.prototype = {
+    CURDTable.prototype = {
 
         /**
          * 初始化函数
          * */
         init: function () {
-            eBase.debug('[openAccountController.js][init]');
+            eBase.debug('[CURDTable.js][init]');
 
             this.addListeners();
             this.renderTable();
@@ -54,7 +54,10 @@
         },
 
         renderTable: function () {
-            /*$("#openAccountTable").bootstrapTable({
+
+            var self = this;
+
+            /*$(self.cfg.t).bootstrapTable({
              search: true,
              pagination: true,
              showRefresh: true,
@@ -66,23 +69,26 @@
              toolbar: "#exampleTableEventsToolbar",
              icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
              });*/
-            var self = this;
+
 
             $(self.cfg.t).bootstrapTable({
                 url: self.cfg.queryUrl,
                 search: !0,
+                striped: true,
                 pagination: !0,
                 showRefresh: !0,
                 showToggle: !0,
                 showColumns: !0,
                 iconSize: "outline",
+                showExport: true,
+                exportDataType: "basic",
                 toolbar: self.toolbar,
                 icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
             });
 
             return;
 
-            $('#openAccountTable').bootstrapTable({
+            $(self.cfg.t).bootstrapTable({
                 url: 'js/demo/customer.json',
                 method: 'get',
                 striped: true,   //是否显示间隔色
@@ -138,14 +144,14 @@
             var self = this;
 
             $(self.cfg.addBtn).click(function () {
-                eBase.debug('[openAccountController.js][addButtonListeners][addBtn click handler]');
+                eBase.debug('[CURDTable.js][addButtonListeners][addBtn click handler]');
                 var addBtn = $(this);
                 self.addOrEdit(false, addBtn);
             });
             $(self.cfg.editBtn).click(function () {
-                eBase.debug('[openAccountController.js][addButtonListeners][editBtn click handler]');
+                eBase.debug('[CURDTable.js][addButtonListeners][editBtn click handler]');
 
-                var selections = $("#openAccountTable").bootstrapTable('getSelections');
+                var selections = $(self.cfg.t).bootstrapTable('getSelections');
 
                 if (selections && selections.length == 0) {
                     w.layer.msg("请选择一条记录");
@@ -159,8 +165,8 @@
                 self.addOrEdit(true, editBtn, selections[0]);
             });
             $(self.cfg.delBtn).click(function () {
-                eBase.debug('[openAccountController.js][addButtonListeners][openAccount_removeBtn click handler]');
-                var selections = $("#openAccountTable").bootstrapTable('getSelections');
+                eBase.debug('[CURDTable.js][addButtonListeners][openAccount_removeBtn click handler]');
+                var selections = $(self.cfg.t).bootstrapTable('getSelections');
                 if (selections && selections.length < 1) {
                     w.layer.msg("请选择要删除的数据");
                     return;
@@ -260,7 +266,9 @@
         },
 
         addTableListeners: function () {
-            $("#openAccountTable").on("all.bs.table", function () {
+            var self = this;
+
+            $(self.cfg.t).on("all.bs.table", function () {
                 //console.log('all.bs.table click');
             }).on("click-row.bs.table", function (row, $element, field) {
                 //console.log("Event:click-row.bs.table");
@@ -295,9 +303,9 @@
         queryData: function () {
             var self = this;
             eBase.send({url: self.cfg.queryUrl}).done(function (result) {
-                eBase.debug('[openAccountController.js][queryData][send success]');
+                eBase.debug('[CURDTable.js][queryData][send success]');
             }).fail(function (result) {
-                eBase.debug('[openAccountController.js][queryData][send fail]');
+                eBase.debug('[CURDTable.js][queryData][send fail]');
             });
         },
 
@@ -319,27 +327,29 @@
             var self = this;
 
             eBase.send({'url': self.cfg.addUrl, data: sendData}).done(function () {
-                eBase.debug('[openAccountController.js][addItem][send success]');
+                eBase.debug('[CURDTable.js][addItem][send success]');
                 w.layer.msg('保存成功');
             }).fail(function () {
-                eBase.debug('[openAccountController.js][addItem][send failed]');
+                eBase.debug('[CURDTable.js][addItem][send failed]');
                 w.layer.msg('保存失败');
             });
         },
 
         delItem: function (ids) {
             var self = this;
-            eBase.debug('[openAccountController.js][delItem]');
+            eBase.debug('[CURDTable.js][delItem]');
             eBase.send({'url': self.cfg.delUrl, data: ids}).done(function () {
-                eBase.debug('[openAccountController.js][delItem][send success]');
+                eBase.debug('[CURDTable.js][delItem][send success]');
                 w.layer.msg('删除成功');
             }).fail(function () {
-                eBase.debug('[openAccountController.js][delItem][send failed]');
+                eBase.debug('[CURDTable.js][delItem][send failed]');
                 w.layer.msg('删除失败');
             });
         }
     };
 
-    var c = new OpenAccountController().init();
+    //var c = new CURDTable().init();
+
+    w.cur = CURDTable;
 
 })(window, $, layer);

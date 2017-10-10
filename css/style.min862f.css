@@ -7483,4 +7483,9 @@ body.skin-3 {
     padding: 20px 30px 20px 20px;
 }
 
+.tbar {
+    float: left;
+    margin-top:10px;
+}
+
 /*自研化结束*/
