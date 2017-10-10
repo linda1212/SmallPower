@@ -2,16 +2,16 @@
 
     window.eBase = {
 
-        isDebug:!0,
+        isDebug: !0,
 
         gotoLoginPage: function () {
-            console.log('[eBase.js][gotoLoginPage][enter]');
+            this.debug('[eBase.js][gotoLoginPage][enter]');
 
             window.location.href = '././login.html';
         },
 
         gotoHomePage: function () {
-            console.log('[eBase.js][gotoHomePage][enter]');
+            this.debug('[eBase.js][gotoHomePage][enter]');
 
             window.location.href = '././index.html';
         },
@@ -21,33 +21,51 @@
             var self = this;
 
             if ('' == username || '' == password) {
-                console.log('[login.js][checkAuthentication][username or password is null]');
+                self.debug('[login.js][checkAuthentication][username or password is null]');
                 return;
             }
 
-            console.log('[login.js][checkAuthentication][begin send request]');
+            self.debug('[login.js][checkAuthentication][begin send request]');
 
-            if ('' != username && '' != password) {
-                self.loginSuccessHandler(currentpage)
-            } else {
-                self.loginFailedHandler(currentpage);
-            }
+            /*if ('' != username && '' != password) {
+             self.loginSuccessHandler(currentpage)
+             } else {
+             self.loginFailedHandler(currentpage);
+             }*/
 
-            return;
+            var dfd = $.Deferred();
 
-            $.ajax({
-                url: 'login',
-                username: username,
-                password: password
+            self.send({
+                "url": '/login',
+                "request": {
+                    "id": username, //用户名
+                    "psd": password //密码
+                }
+            }).done(function(resp){
+                self.loginSuccessHandler(currentpage, resp);
+                dfd.resolve(resp);
+            }).fail(function(resp){
+                self.loginFailedHandler(currentpage, resp);
+                dfd.reject(resp);
+            });
+
+            return dfd;
+
+            /*$.ajax({
+                "url": '/login',
+                "request": {
+                    "id": username, //用户名
+                    "psd": password //密码
+                }
             }).success(function (resp) {
                 self.loginSuccessHandler(currentpage, resp);
             }).fail(function (resp) {
                 self.loginFailedHandler(currentpage, resp);
-            });
+            });*/
         },
 
         initPages: function () {
-            console.log('[eBase.js][initPages]');
+            this.debug('[eBase.js][initPages]');
         },
 
         loginSuccessHandler: function (currentpage, resp) {
@@ -82,7 +100,7 @@
             return dfd;
         },
 
-        debug:function(string){
+        debug: function (string) {
             this.isDebug && console.log(string);
         }
     };
