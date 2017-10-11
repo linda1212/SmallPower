@@ -6,16 +6,17 @@
 
         this.cfg = $.extend(value, {
             maxheight: 800,
-            toolbar:"#exampleTableEventsToolbar",
-            editTitle:"编辑",
-            addTitle:"增加",
-            confirmMsg:"确定删除此条数据?"
+            toolbar: "#exampleTableEventsToolbar",
+            editTitle: "编辑",
+            addTitle: "增加",
+            confirmMsg: "确定删除此条数据?"
         });
 
         this.addFlag = true;
 
         this.$t = null;
         this.$m = null;
+        this.cobj = {};
 
         eBase.debug('[CURDTable.js][CURDTable][构造器]');
     }
@@ -30,6 +31,7 @@
 
             this.renderTable();
             this.addListeners();
+            this.initModelData();
         },
 
         /**
@@ -46,6 +48,54 @@
                 pageIndex: params.pageNumber
             };
             return result;
+        },
+
+        initModelData: function () {
+            eBase.debug('[CURDTable.js][initModelData][enter]');
+            var self = this;
+            if (!self.cfg || !self.cfg.child)return;
+            for (var i = 0; self.cfg.child.length; i++) {
+                var obj = self.cfg.child[i];
+                if (obj.type && obj.net && "select" === obj.type && "true" === obj.net) {
+
+                    for (var key in obj) {
+                        this.cobj[key] = obj[key];
+                    }
+
+                    eBase.send({'url': obj.url}).done(function (resp) {
+                        self.setSelect(resp);
+
+                    }).fail(function (resp) {
+                        self.setSelect(resp);
+                        //w.layer.msg("获取数据失败");
+                    });
+                }
+            }
+        },
+
+        setSelect: function (resp) {
+            resp = resp || {};
+            var list = resp.list;
+            var self = this;
+
+            //test code
+            list = [{
+                "mkt_id": "01",
+                "mkt_name": "大唐电网"
+            }, {
+                "mkt_id": "02",
+                "mkt_name": "国力电网"
+            }, {
+                "mkt_id": "03",
+                "mkt_name": "xx交易市场名称"
+            }];
+
+            for (var i = 0; i < list.length; i++) {
+                var otxt = list[i][self.cobj.showfield];
+                $(self.cobj.el).append("<option value='" + list[i][self.cobj.idfield] + "'>" + otxt + "</option>")
+            }
+
+            $(self.cobj.el).val("");
         },
 
         renderTable: function () {
@@ -69,9 +119,9 @@
                 icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
             });
 
-            self.$m = $(self.cfg.m).modal({ show: false });
+            self.$m = $(self.cfg.m).modal({show: false});
 
-            self.$t.bootstrapTable("hideColumn","id");
+            self.$t.bootstrapTable("hideColumn", "id");
 
             return;
 
@@ -127,14 +177,16 @@
             });
         },
 
-        clearModal:function(){
+        clearModal: function () {
             var self = this;
             self.$m.find('input[type="text"]').val("");
             self.$m.find('input[type="password"]').val("");
             self.$m.find('input[type="email"]').val("");
+            self.$m.find('input[type="email"]').val("");
+            self.$m.find('select').val("");
         },
 
-        showModal:function (title, row) {
+        showModal: function (title, row) {
 
             var self = this;
             var def = {};
@@ -146,8 +198,12 @@
             self.$m.find('.modal-title').text(title);
             for (var name in row) {
                 self.$m.find('input[name="' + name + '"]').val(row[name]);
+                self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']").attr("selected", true);
+                var temp = self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']");
             }
             self.$m.modal('show');
+
+            //$(".selector").find("option[text='pxx']").attr("selected",true);
         },
 
         addButtonListeners: function () {
@@ -162,7 +218,7 @@
             $(self.cfg.editBtn).click(function () {
                 eBase.debug('[CURDTable.js][addButtonListeners][editBtn click handler]');
 
-                self.addFlag= false;
+                self.addFlag = false;
                 var selections = $(self.cfg.t).bootstrapTable('getSelections');
 
                 if (selections && selections.length == 0) {
@@ -172,7 +228,7 @@
                     w.layer.msg("一次不能编辑多条");
                     return;
                 }
-                self.showModal(self.cfg.editTitle,selections[0]);
+                self.showModal(self.cfg.editTitle, selections[0]);
             });
             $(self.cfg.delBtn).click(function () {
                 eBase.debug('[CURDTable.js][addButtonListeners][openAccount_removeBtn click handler]');
@@ -183,9 +239,9 @@
                 }
 
                 var delIndex = w.layer.confirm(self.cfg.confirmMsg, {
-                    btn: ['删除','取消'], //按钮
+                    btn: ['删除', '取消'], //按钮
                     shade: false //不显示遮罩
-                }, function(){
+                }, function () {
                     eBase.debug('[CURDTable.js][addButtonListeners][删除 click handler]');
 
                     var ids = [];
@@ -199,34 +255,29 @@
 
                     w.layer.close(delIndex);
 
-                }, function(){
+                }, function () {
                     eBase.debug('[CURDTable.js][addButtonListeners][取消 click handler]');
                 });
             });
 
-            self.$m && self.$m.find('.submit').click(function(){
+            self.$m && self.$m.find('.submit').click(function () {
                 var row = {};
-                self.$m.find('input[name]').each(function() {
+                var itemNames = [];
+                self.$m.find('input[name]').each(function () {
+                    var l = $(this).parent().find("label").text();
+                    itemNames.push($(this).attr('name'));
                     row[$(this).attr('name')] = $(this).val();
                 });
 
-                self.addItem(row);
-
-                $.ajax({
-                    url: API_URL + ($modal.data('id') || ''),
-                    type: $modal.data('id') ? 'put' : 'post',
-                    contentType: 'application/json',
-                    data: JSON.stringify(row),
-                    success: function() {
-                        $modal.modal('hide');
-                        $table.bootstrapTable('refresh');
-                        showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item successful!', 'success');
-                    },
-                    error: function() {
-                        $modal.modal('hide');
-                        showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item error!', 'danger');
+                for (var i = 0; i < itemNames.length; i++) {
+                    if ("" == row[itemNames[i]] || undefined == row[itemNames[i]]) {
+                        var msg = self.$m.find('input[name="' + itemNames[i] + '"]').parent().find("label").text();
+                        w.layer.msg(msg + "不能为空");
+                        return;
                     }
-                });
+                }
+
+                self.addItem(row);
             });
         },
 
@@ -239,9 +290,6 @@
                     count++;
                 }
             });
-            //42 标题
-            //40 上下padding
-            //50 button group
             return Math.ceil(count / 2) * 49 + 42 + 40 + 50 + 30;
         },
 
@@ -374,21 +422,12 @@
         /**
          * 增加,修改
          * */
-        addItem: function (sendData, itemNames) {
-
-            for (var i = 0; i < itemNames.length; i++) {
-                sendData[itemNames[i]] = $('#' + itemNames[i]).val();
-
-                if ("" == sendData[itemNames[i]]) {
-                    var msg = $('#' + itemNames[i]).parent().parent().find("label").text();
-                    w.layer.msg(msg + "不能为空");
-                    return;
-                }
-            }
-
+        addItem: function (row) {
             var self = this;
 
-            eBase.send({'url': self.cfg.addUrl, data: sendData}).done(function () {
+            var url = self.addFlag ? self.cfg.addUrl : self.cfg.editUrl;
+
+            eBase.send({'url': url, data: JSON.stringify(row)}).done(function () {
                 eBase.debug('[CURDTable.js][addItem][send success]');
                 w.layer.msg('保存成功');
                 self.$m.modal('hide');
@@ -403,7 +442,7 @@
         delItem: function (ids) {
             var self = this;
             eBase.debug('[CURDTable.js][delItem]');
-            eBase.send({'url': self.cfg.delUrl, data: ids}).done(function () {
+            eBase.send({'url': self.cfg.delUrl, data: JSON.stringify(ids)}).done(function () {
                 eBase.debug('[CURDTable.js][delItem][send success]');
                 self.$t.bootstrapTable('refresh');
                 w.layer.msg('删除成功');

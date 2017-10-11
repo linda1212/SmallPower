@@ -36,6 +36,9 @@ window.jsConfig = {
         url: 'plugins/layer/layer.min.js'
     }, {
         url: 'demo/layer-demo.min.js'
+    },{
+        //date
+        url: 'plugins/layer/laydate/laydate.js'
     }],
 
     importJSFilesByList: function (list) {

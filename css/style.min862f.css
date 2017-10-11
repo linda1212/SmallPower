@@ -7501,8 +7501,13 @@ body.skin-3 {
 }
 
 .modal-body {
-    max-height: 500px!important;
-    overflow-y: scroll!important;
+    max-height: 500px !important;
+    overflow-y: scroll !important;
+}
+
+.laydate-icon {
+    border-color: #e5e6e7 !important;
+    display: block !important;
 }
 
 /*自研化结束*/

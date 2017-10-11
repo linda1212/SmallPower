@@ -41,7 +41,7 @@
                                 <th data-field="id" data-id-field="id">id</th>
                                 <th data-field="uuid">市场成员统码</th>
                                 <th data-field="alias">别名/简称</th>
-                                <th data-field="mkt_id">交易市场</th>
+                                <th data-field="mkt_name">交易市场</th>
                                 <th data-field="name">名称</th>
                                 <th data-field="mkt_type">市场成员类型</th>
                                 <th data-field="addr">地理区域</th>
@@ -86,8 +86,11 @@
                     <input type="text" class="form-control" name="alias" placeholder="">
                 </div>
                 <div class="form-group">
+                    <!--select-->
                     <label>交易市场</label>
-                    <input type="text" class="form-control" name="mkt_id" placeholder="">
+                    <!--<input type="text" class="form-control" name="mkt_id" placeholder="">-->
+                    <select id="mkt_name" class="form-control m-b" name="mkt_name">
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>名称</label>
@@ -147,15 +150,15 @@
                 </div>
                 <div class="form-group">
                     <label>注册时间</label>
-                    <input type="text" class="form-control" name="reg_dt" placeholder="">
+                    <input id="reg_dt" type="text" class="form-control laydate-icon layer-date">
                 </div>
                 <div class="form-group">
                     <label>生效时间</label>
-                    <input type="text" class="form-control" name="effect_dt" placeholder="">
+                    <input id="effect_dt" type="text" class="form-control laydate-icon layer-date">
                 </div>
                 <div class="form-group">
                     <label>失效时间</label>
-                    <input type="text" class="form-control" name="exp_dt" placeholder="">
+                    <input id="exp_dt" type="text" class="form-control laydate-icon layer-date">
                 </div>
             </div>
             <div class="modal-footer">
@@ -172,12 +175,25 @@
 <script src="js/pages/CURDTable.js"></script>
 <script>
 
+    laydate({elem: "#reg_dt", event: "focus"});
+    laydate({elem: "#effect_dt", event: "focus"});
+    laydate({elem: "#exp_dt", event: "focus"});
+
     new cur({
         t: "#openAccountTable",//操作表的ID
         m:"#modal",
         uuid: "CId",//主键
+        child:[{
+            el:"#mkt_name",
+            url:"http://localhost:8080/Long/add",
+            showfield:"mkt_name",
+            idfield:"mkt_id",
+            type:"select",
+            net:'true'
+        }],
         queryUrl: "js/demo/customer.json",
         addUrl: "http://localhost:8080/Long/add",
+        editUrl:"http://localhost:8080/Long/edit",
         delUrl: "http://localhost:8080/Long/del",
         toolbar: "#exampleTableEventsToolbar",
         addBtn: "#openAccount_addBtn",
