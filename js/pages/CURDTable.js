@@ -1,20 +1,21 @@
 (function (w, $, layer) {
 
-    "use strict"
+    "use strict";
 
     function CURDTable(value) {
 
         this.cfg = $.extend(value, {
-            /*t: "#openAccountTable",//操作表的ID
-            uuid: "CId",//主键
-            queryUrl: "js/demo/customer.json",
-            addUrl: "http://localhost:8080/Long/add",
-            delUrl: "http://localhost:8080/Long/del",
-            toolbar:"exampleTableEventsToolbar",
-            addBtn:"#openAccount_addBtn",
-            editBtn:"#openAccount_editBtn",
-            delBtn:"#openAccount_removeBtn"*/
+            maxheight: 800,
+            toolbar:"#exampleTableEventsToolbar",
+            editTitle:"编辑",
+            addTitle:"增加",
+            confirmMsg:"确定删除此条数据?"
         });
+
+        this.addFlag = true;
+
+        this.$t = null;
+        this.$m = null;
 
         eBase.debug('[CURDTable.js][CURDTable][构造器]');
     }
@@ -27,8 +28,8 @@
         init: function () {
             eBase.debug('[CURDTable.js][init]');
 
-            this.addListeners();
             this.renderTable();
+            this.addListeners();
         },
 
         /**
@@ -41,37 +42,19 @@
 
         queryParams: function (params) {
             var result = {
-
-                //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                //limit: params.limit, //页面大小
-                //page: params.offset, //页码
-
                 pageSize: params.pageSize,
                 pageIndex: params.pageNumber
-
             };
             return result;
         },
 
         renderTable: function () {
 
+            eBase.debug('[CURDTable.js][renderTable][enter]');
+
             var self = this;
 
-            /*$(self.cfg.t).bootstrapTable({
-             search: true,
-             pagination: true,
-             showRefresh: true,
-             showToggle: true,
-             showColumns: true,
-             data: list,
-             height: "600",
-             iconSize: "outline",
-             toolbar: "#exampleTableEventsToolbar",
-             icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
-             });*/
-
-
-            $(self.cfg.t).bootstrapTable({
+            self.$t = $(self.cfg.t).bootstrapTable({
                 url: self.cfg.queryUrl,
                 search: !0,
                 striped: true,
@@ -85,6 +68,10 @@
                 toolbar: self.toolbar,
                 icons: {refresh: "glyphicon-repeat", toggle: "glyphicon-list-alt", columns: "glyphicon-list"}
             });
+
+            self.$m = $(self.cfg.m).modal({ show: false });
+
+            self.$t.bootstrapTable("hideColumn","id");
 
             return;
 
@@ -140,17 +127,42 @@
             });
         },
 
+        clearModal:function(){
+            var self = this;
+            self.$m.find('input[type="text"]').val("");
+            self.$m.find('input[type="password"]').val("");
+            self.$m.find('input[type="email"]').val("");
+        },
+
+        showModal:function (title, row) {
+
+            var self = this;
+            var def = {};
+            def[self.uuid] = '';
+
+            row = row || def;
+
+            this.$m.data('id', row.id);
+            self.$m.find('.modal-title').text(title);
+            for (var name in row) {
+                self.$m.find('input[name="' + name + '"]').val(row[name]);
+            }
+            self.$m.modal('show');
+        },
+
         addButtonListeners: function () {
             var self = this;
 
             $(self.cfg.addBtn).click(function () {
                 eBase.debug('[CURDTable.js][addButtonListeners][addBtn click handler]');
-                var addBtn = $(this);
-                self.addOrEdit(false, addBtn);
+                self.addFlag = true;
+                self.clearModal();
+                self.showModal(self.cfg.addTitle);
             });
             $(self.cfg.editBtn).click(function () {
                 eBase.debug('[CURDTable.js][addButtonListeners][editBtn click handler]');
 
+                self.addFlag= false;
                 var selections = $(self.cfg.t).bootstrapTable('getSelections');
 
                 if (selections && selections.length == 0) {
@@ -160,9 +172,7 @@
                     w.layer.msg("一次不能编辑多条");
                     return;
                 }
-
-                var editBtn = $(this);
-                self.addOrEdit(true, editBtn, selections[0]);
+                self.showModal(self.cfg.editTitle,selections[0]);
             });
             $(self.cfg.delBtn).click(function () {
                 eBase.debug('[CURDTable.js][addButtonListeners][openAccount_removeBtn click handler]');
@@ -171,16 +181,68 @@
                     w.layer.msg("请选择要删除的数据");
                     return;
                 }
-                var delBtn = $(this);
-                var ids = [];
 
-                for (var i = 0; i < selections.length; i++) {
-                    var item = {};
-                    item[self.cfg.uuid] = selections[i][self.cfg.uuid];
-                    ids.push(item);
-                }
-                self.delItem(ids);
+                var delIndex = w.layer.confirm(self.cfg.confirmMsg, {
+                    btn: ['删除','取消'], //按钮
+                    shade: false //不显示遮罩
+                }, function(){
+                    eBase.debug('[CURDTable.js][addButtonListeners][删除 click handler]');
+
+                    var ids = [];
+
+                    for (var i = 0; i < selections.length; i++) {
+                        var item = {};
+                        item[self.cfg.uuid] = selections[i][self.cfg.uuid];
+                        ids.push(item);
+                    }
+                    self.delItem(ids);
+
+                    w.layer.close(delIndex);
+
+                }, function(){
+                    eBase.debug('[CURDTable.js][addButtonListeners][取消 click handler]');
+                });
             });
+
+            self.$m && self.$m.find('.submit').click(function(){
+                var row = {};
+                self.$m.find('input[name]').each(function() {
+                    row[$(this).attr('name')] = $(this).val();
+                });
+
+                self.addItem(row);
+
+                $.ajax({
+                    url: API_URL + ($modal.data('id') || ''),
+                    type: $modal.data('id') ? 'put' : 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify(row),
+                    success: function() {
+                        $modal.modal('hide');
+                        $table.bootstrapTable('refresh');
+                        showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item successful!', 'success');
+                    },
+                    error: function() {
+                        $modal.modal('hide');
+                        showAlert(($modal.data('id') ? 'Update' : 'Create') + ' item error!', 'danger');
+                    }
+                });
+            });
+        },
+
+        compileHeight: function () {
+            var count = 0;
+            var self = this;
+            $(self.cfg.t).find("th[data-field]").each(function () {
+                var input_hidden = $(this).data('hidden');
+                if (!input_hidden) {
+                    count++;
+                }
+            });
+            //42 标题
+            //40 上下padding
+            //50 button group
+            return Math.ceil(count / 2) * 49 + 42 + 40 + 50 + 30;
         },
 
         addOrEdit: function (edittype, btn, val) {
@@ -189,6 +251,9 @@
 
             if ("#" + btn.data("table") !== self.cfg.t) return;
 
+            var pw = "800px";
+            var ph = self.compileHeight() > self.cfg.maxheight ? self.cfg.maxheight + "px" : self.compileHeight() + "px";
+
             var tit = edittype ? "编辑" : "添加";
             var index = w.layer.open({
                 id: 'my_layer',
@@ -196,7 +261,7 @@
                 title: tit,
                 skin: "layui-layer-rim",
                 closeBtn: !0,
-                area: ['800px', '300px'],
+                area: [pw, ph],
                 shift: 2,
                 shadeClose: !0,
                 content: '<div id="app_layer_box"></div><div id="app_btn_box" class="row"></div>',
@@ -205,13 +270,11 @@
             var wrap = $('<div id="contentBox" class="row form-horizontal m-t"></div>');
             var input_ids = [];
 
-            var t = btn.data("table");
-
-            $('#' + t).find("th[data-field]").each(function () {
+            $(self.cfg.t).find("th[data-field]").each(function () {
 
                 var input_field = $(this).data('field');
                 var input_hidden = $(this).data('hidden');
-                var input_label = $(this).text();
+                var input_label = $(this).text() + "&nbsp:";
 
                 if (!input_hidden) {
 
@@ -220,7 +283,7 @@
                     var item = $('<div class="col-md-6">' +
                         '<div class="form-group">' +
                         '<label class="col-sm-3 control-label">' + input_label + '</label>' +
-                        '<div class="col-sm-9">' +
+                        '<div class="col-sm-9 form_box">' +
                         '<input type="text" id="' + input_field + '" class="form-control" placeholder="">' +
                         '</div>' +
                         '</div>' +
@@ -231,11 +294,9 @@
 
             var buttonGroup = $('<div class="layui-layer-btn">' +
                 '<button id="layer_OK_Button"  type="button" title="保存" class="btn btn-outline btn-default layui-layer-btn0">' +
-                    /*'<i class="glyphicon" ></i>' +*/
                 '<span>保存</span>' +
                 '</button>' +
                 '<button id="layer_Cancel_Button"  type="button" title="保存" class="btn btn-outline btn-default layui-layer-btn1">' +
-                    /*'<i class="glyphicon" ></i>' +*/
                 '<span>取消</span>' +
                 '</button>' +
                 '</div>');
@@ -304,6 +365,7 @@
             var self = this;
             eBase.send({url: self.cfg.queryUrl}).done(function (result) {
                 eBase.debug('[CURDTable.js][queryData][send success]');
+                $(self.cfg.t).bootstrapTable('refresh');
             }).fail(function (result) {
                 eBase.debug('[CURDTable.js][queryData][send fail]');
             });
@@ -329,8 +391,11 @@
             eBase.send({'url': self.cfg.addUrl, data: sendData}).done(function () {
                 eBase.debug('[CURDTable.js][addItem][send success]');
                 w.layer.msg('保存成功');
+                self.$m.modal('hide');
+                self.$t.bootstrapTable('refresh');
             }).fail(function () {
                 eBase.debug('[CURDTable.js][addItem][send failed]');
+                self.$m.modal('hide');
                 w.layer.msg('保存失败');
             });
         },
@@ -340,6 +405,7 @@
             eBase.debug('[CURDTable.js][delItem]');
             eBase.send({'url': self.cfg.delUrl, data: ids}).done(function () {
                 eBase.debug('[CURDTable.js][delItem][send success]');
+                self.$t.bootstrapTable('refresh');
                 w.layer.msg('删除成功');
             }).fail(function () {
                 eBase.debug('[CURDTable.js][delItem][send failed]');
@@ -347,8 +413,6 @@
             });
         }
     };
-
-    //var c = new CURDTable().init();
 
     w.cur = CURDTable;
 

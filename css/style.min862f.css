@@ -4579,7 +4579,7 @@ body.modal-open {
 
 .dashboard-header {
     border-top: 0;
-    padding: 20px
+    padding: 6px 20px 20px 20px;
 }
 
 .dashboard-header h2 {
@@ -7460,7 +7460,7 @@ body.skin-3 {
     max-width: 200px;
 }
 
-.hiden{
+.hiden {
     display: none;
 }
 
@@ -7485,7 +7485,24 @@ body.skin-3 {
 
 .tbar {
     float: left;
-    margin-top:10px;
+    margin-top: 10px;
+}
+
+.example-wrap {
+    margin-top: 20px;
+}
+
+.ibox-title {
+    border: 0;
+}
+
+.form_box {
+    padding-left: 0 !important;
+}
+
+.modal-body {
+    max-height: 500px!important;
+    overflow-y: scroll!important;
 }
 
 /*自研化结束*/
