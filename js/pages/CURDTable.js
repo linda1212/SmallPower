@@ -10,9 +10,6 @@
             editTitle: "编辑",
             addTitle: "增加",
             confirmMsg: "确定删除此条数据?"
-            /*addBtn: "#add",
-             editBtn: "#edit",
-             delBtn: "#del"*/
         }, value);
 
         this.addFlag = true;
@@ -61,7 +58,9 @@
             if(self.cfg.dataInputs && self.cfg.dataInputs.length > 0){
                 for (var i = 0; i < self.cfg.dataInputs.length; i++) {
                     var item = self.cfg.dataInputs[i];
-                    d({elem: item, event: "focus"});
+                    if($(item)){
+                        d({elem: item, event: "focus"});
+                    }
                 }
             }
         },

@@ -1,39 +1,35 @@
 [
   {
-    "id":"id",
-    "ppinfoId":"所属用户",
-    "jobTitle":"联系人类型",
-    "addr":"联系地址",
-    "postcode":"邮编",
-    "name":"联系人",
-    "tel":"联系人固定电话",
-    "mobi":"联系人移动电话",
-    "email":"联系人电子邮件联系人移动电话"
+    "id":"01",
+    "ppinfoId":"001",
+    "jobTitle":"电气联系人",
+    "addr":"南京市",
+    "postcode":"210000",
+    "name":"杨经理",
+    "tel":"025-12341234",
+    "mobi":"13812341234",
+    "email":"yang@gmail.com"
   },
   {
-    "id" : "02",
-    "uuid" : "2234-5678",
-    "parentId" : "02",
-    "mktLevel" : "1",
-    "name" : "大唐电力",
-    "mktDesc" : "描述",
-    "effectDt" : "2017-02-03",
-    "expDt" : "2020-02-03",
-    "orderNum" : "1",
-    "updateTime" : "2017-10-20",
-    "authorId" : "0001"
+    "id":"02",
+    "ppinfoId":"001",
+    "jobTitle":"企业负责人",
+    "addr":"南京市",
+    "postcode":"210000",
+    "name":"曹总",
+    "tel":"025-12341234",
+    "mobi":"13812341234",
+    "email":"caoping@gmail.com"
   },
   {
-    "id" : "03",
-    "uuid" : "3234-5678",
-    "parentId" : "02",
-    "mktLevel" : "1",
-    "name" : "国网江苏电力",
-    "mktDesc" : "描述",
-    "effectDt" : "2017-02-03",
-    "expDt" : "2020-02-03",
-    "orderNum" : "1",
-    "updateTime" : "2017-10-20",
-    "authorId" : "0001"
+    "id":"03",
+    "ppinfoId":"001",
+    "jobTitle":"财务负责人",
+    "addr":"南京市",
+    "postcode":"210000",
+    "name":"王经理",
+    "tel":"025-12341234",
+    "mobi":"13812341234",
+    "email":"wang@gmail.com"
   }
 ]
