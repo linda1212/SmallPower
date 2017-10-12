@@ -136,6 +136,7 @@
 
             var self = this;
 
+            $(self.cfg.t).bootstrapTable('destroy');
             self.$t = $(self.cfg.t).bootstrapTable({
                 url: self.cfg.queryUrl,
                 search: !0,
@@ -206,7 +207,6 @@
                  field: 'age',
                  title: 'age'
                  }]*/
-
             });
         },
 
@@ -282,7 +282,6 @@
 
                     for (var i = 0; i < selections.length; i++) {
                         var item = selections[i][self.cfg.uuid];
-                        //item[self.cfg.uuid] = selections[i][self.cfg.uuid];
                         item && ids.push(item);
                     }
 

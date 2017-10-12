@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>太谷售电一体化平台 —— 用电客户管理</title>
+    <title>太谷售电一体化平台 —— 售电点管理</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -15,8 +15,7 @@
             <div class="col-sm-12">
                 <!-- Example Events -->
                 <div class="example-wrap">
-                    <h3 class="example-title">用电客户管理</h3>
-
+                    <h3 class="example-title">售电点管理</h3>
                     <div class="example">
                         <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
                             <button id="add" data-table="TContact" type="button" title="新增客户"
@@ -48,9 +47,6 @@
                                 <th data-field="tel">联系人固定电话</th>
                                 <th data-field="mobi">联系人移动电话</th>
                                 <th data-field="email">联系人电子邮件联系人移动电话</th>
-                                <th class="col-xs-2" data-field="action" data-formatter="actionFormatter"
-                                    data-events="actionEvents">操作
-                                </th>
                             </tr>
                             </thead>
                         </table>
@@ -121,24 +117,12 @@
 <script src="js/pages/CURDTable.js"></script>
 <script>
 
-    function actionFormatter(value, row, index) {
-        var result = '<div class="btn-group hidden-xs" id="actionbar" role="group">\
-                    <button id="detail" type="button" class="btn btn-outline btn-default">\
-                    <span>查看详情</span>\
-                    </button>\
-                    <button id="mgrp" type="button" class="btn btn-outline btn-default">\
-                    <span>管理售电点</span>\
-                    </button>\
-                    </div>';
-        return result;
-    }
-
     new cur({
         t: "#TContact",
         m: "#modal",
         uuid: "id",
-        hideCols: ["id"],
-        queryUrl: "js/demo/customer.json",
+        hideCols:["id"],
+        queryUrl: "js/demo/contact.json",
         addUrl: "http://localhost:8080/Long/add",
         editUrl: "http://localhost:8080/Long/edit",
         delUrl: "http://localhost:8080/Long/del",
