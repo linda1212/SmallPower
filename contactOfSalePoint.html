@@ -10,37 +10,37 @@
 </head>
 
 <body class="white-bg">
-<div class="row  white-bg dashboard-header">
-    <div class="col-sm-12">
-        <div class="row">
-            <div class="col-sm-12">
+<d class="row  white-bg dashboard-header">
+    <d class="col-sm-12">
+        <d class="row">
+            <d class="col-sm-12">
                 <!-- Example Events -->
-                <div class="example-wrap">
+                <d class="example-wrap">
                     <h4 class="example-title">交易市场管理</h4>
 
-                    <div class="example">
+                    <d class="example">
                         <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
-                            <button id="BMAdd" data-table="TMarket" type="button" title="新增客户"
+                            <button id="add" data-table="TContact" type="button" title="新增客户"
                                     class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                                 <span>新增</span>
                             </button>
-                            <button id="BMEdit" data-table="TMarket" type="button"
+                            <button id="edit" data-table="TContact" type="button"
                                     class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
                                 <span>编辑</span>
                             </button>
-                            <button id="BMDel" data-table="TMarket" type="button" title="删除客户"
+                            <button id="del" data-table="TContact" type="button" title="删除客户"
                                     class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
                                 <span>删除</span>
                             </button>
                         </div>
-                        <table id="TMarket" data-height="700" data-mobile-responsive="true">
+                        <table id="TContact" data-height="700" data-mobile-responsive="true">
                             <thead>
                             <tr>
                                 <th data-field="state" data-my="1" data-checkbox="true"></th>
-                                <th data-field="id">id</th>
+                                <!--<th data-field="id">id</th>
                                 <th data-field="orderNum">序号</th>
                                 <th data-field="uuid">市场编码</th>
                                 <th data-field="parentId">上级市场编号</th>
@@ -50,7 +50,16 @@
                                 <th data-field="effectDt">生效时间</th>
                                 <th data-field="expDt">失效时间</th>
                                 <th data-field="updateTime">信息更新时间</th>
-                                <th data-field="authorId">信息更新人编号</th>
+                                <th data-field="authorId">信息更新人编号</th>-->
+                                <th data-field="id">id</th>
+                                <th data-field="ppinfoId">所属用户</th>
+                                <th data-field="jobTitle">联系人类型</th>
+                                <th data-field="addr">联系地址</th>
+                                <th data-field="postcode">邮编</th>
+                                <th data-field="name">联系人</th>
+                                <th data-field="tel">联系人固定电话</th>
+                                <th data-field="mobi">联系人移动电话</th>
+                                <th data-field="email">联系人电子邮件联系人移动电话</th>
                             </tr>
                             </thead>
                         </table>
@@ -135,18 +144,16 @@
     laydate({elem: "#updateTime", event: "focus"});
 
     new cur({
-        t: "#TMarket",
+        t: "#TContact",
         m: "#modal",
         uuid: "id",
-        hideCols:["id","id2"],
-        queryUrl: "js/demo/market.json",
+        hideCols:["id"],
+        dataInputs:["#effectDt","#expDt","#updateTime"],
+        queryUrl: "js/demo/contact.json",
         addUrl: "http://localhost:8080/Long/add",
         editUrl: "http://localhost:8080/Long/edit",
         delUrl: "http://localhost:8080/Long/del",
-        toolbar: "#exampleTableEventsToolbar",
-        addBtn: "#BMAdd",
-        editBtn: "#BMEdit",
-        delBtn: "#BMDel"
+        toolbar: "#exampleTableEventsToolbar"
     }).init();
 
 </script>

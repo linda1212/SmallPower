@@ -1,0 +1,26 @@
+[
+  {
+    "id":"ID",
+    "uuid":"市场成员统一编码",
+    "alias":"别名/简称",
+    "mktId":"交易市场",
+    "name":"名称",
+    "mktType":"市场成员类型",
+    "addr":"地理区域",
+    "postcode":"邮政编码",
+    "corpR":"法人代表",
+    "contact":"常用联系人",
+    "tel":"办公电话",
+    "mobi":"手机号码",
+    "fax":"传真号码",
+    "email":"电子邮箱",
+    "openBank":"开户银行",
+    "openName":"开户名称",
+    "openAcc":"开户帐号",
+    "mAddr":"通信地址",
+    "regDt":"注册时间",
+    "effectDt":"生效时间",
+    "expDt":"失效时间",
+    "bValid":"是否有效用户:0,无效;1,有效"
+  }
+]

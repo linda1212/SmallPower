@@ -7510,4 +7510,8 @@ body.skin-3 {
     display: block !important;
 }
 
+.hide {
+    display: none;
+}
+
 /*自研化结束*/

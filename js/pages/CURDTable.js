@@ -1,4 +1,4 @@
-(function (w, $, layer) {
+(function (w, $, layer, d) {
 
     "use strict";
 
@@ -9,7 +9,10 @@
             toolbar: "#exampleTableEventsToolbar",
             editTitle: "编辑",
             addTitle: "增加",
-            confirmMsg: "确定删除此条数据?"
+            confirmMsg: "确定删除此条数据?",
+            addBtn: "#add",
+            editBtn: "#edit",
+            delBtn: "#del"
         });
 
         this.addFlag = true;
@@ -43,7 +46,9 @@
         },
 
         queryParams: function (params) {
-            var result = {
+            var result;
+
+            result = {
                 pageSize: params.pageSize,
                 pageIndex: params.pageNumber
             };
@@ -53,7 +58,7 @@
         initModelData: function () {
             eBase.debug('[CURDTable.js][initModelData][enter]');
             var self = this;
-            if (!self.cfg || !self.cfg.child)return;
+            if (!self.cfg || !self.cfg.child) return;
             for (var i = 0; self.cfg.child.length; i++) {
                 var obj = self.cfg.child[i];
                 if (obj.type && obj.net && "select" === obj.type && "true" === obj.net) {
@@ -67,7 +72,7 @@
 
                     }).fail(function (resp) {
                         self.setSelect(resp);
-                        //w.layer.msg("获取数据失败");
+                        w.layer.msg("获取数据失败");
                     });
                 }
             }
@@ -75,7 +80,7 @@
 
         setSelect: function (resp) {
             resp = resp || {};
-            var list = resp.list;
+            var list = resp.list || [];
             var self = this;
 
             //test code
@@ -96,6 +101,23 @@
             }
 
             $(self.cobj.el).val("");
+        },
+
+        initHideCols: function (pt) {
+            var self = this;
+            for (var i = 0; i < self.cfg.hideCols.length; i++) {
+                pt.bootstrapTable("hideColumn", self.cfg.hideCols[i]);
+            }
+        },
+
+        inHideCols: function (val) {
+            var self = this;
+            for (var i = 0; i < self.cfg.hideCols.length; i++) {
+                if (val === self.cfg.hideCols[i]) {
+                    return true;
+                }
+            }
+            return false;
         },
 
         renderTable: function () {
@@ -121,26 +143,26 @@
 
             self.$m = $(self.cfg.m).modal({show: false});
 
-            self.$t.bootstrapTable("hideColumn", "id");
+            self.initHideCols(self.$t);
 
             return;
 
             $(self.cfg.t).bootstrapTable({
                 url: 'js/demo/customer.json',
                 method: 'get',
-                striped: true,   //是否显示间隔色
+                striped: true, //是否显示间隔色
                 pagination: true, //是否分页
                 sortable: false,
-                cache: false,//是否启用缓存
+                cache: false, //是否启用缓存
                 search: true, //是否显示搜索
                 sortOrder: "asc",
                 uniqueId: 'CId',
                 sidePagination: "server",
                 queryParamsType: "undefined",
                 //queryParams: queryParams,
-                pageNumber: 1,                       //初始化加载第一页，默认第一页
-                pageSize: 10,                       //每页的记录行数（*）
-                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                pageNumber: 1, //初始化加载第一页，默认第一页
+                pageSize: 10, //每页的记录行数（*）
+                pageList: [10, 25, 50, 100], //可供选择的每页的行数（*）
                 queryParams: function (params) {
                     var subcompany = $('#subcompany option:selected').val();
                     var name = $('#name').val();
@@ -198,12 +220,13 @@
             self.$m.find('.modal-title').text(title);
             for (var name in row) {
                 self.$m.find('input[name="' + name + '"]').val(row[name]);
-                self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']").attr("selected", true);
-                var temp = self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']");
+                //self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']").attr("selected", true);
+                //var temp = self.$m.find('select[name="' + name + '"]');
+                //var temp2 = temp.find("option[text='" + row[name] + "']").attr("selected", true);
+                //var temp2 = temp.find("option:contains('" + row[name] + "')']");
+                //var tempxxx = "xxxx";
             }
             self.$m.modal('show');
-
-            //$(".selector").find("option[text='pxx']").attr("selected",true);
         },
 
         addButtonListeners: function () {
@@ -247,10 +270,11 @@
                     var ids = [];
 
                     for (var i = 0; i < selections.length; i++) {
-                        var item = {};
-                        item[self.cfg.uuid] = selections[i][self.cfg.uuid];
-                        ids.push(item);
+                        var item = selections[i][self.cfg.uuid];
+                        //item[self.cfg.uuid] = selections[i][self.cfg.uuid];
+                        item && ids.push(item);
                     }
+
                     self.delItem(ids);
 
                     w.layer.close(delIndex);
@@ -264,13 +288,13 @@
                 var row = {};
                 var itemNames = [];
                 self.$m.find('input[name]').each(function () {
-                    var l = $(this).parent().find("label").text();
+                    //var l = $(this).parent().find("label").text();
                     itemNames.push($(this).attr('name'));
                     row[$(this).attr('name')] = $(this).val();
                 });
 
                 for (var i = 0; i < itemNames.length; i++) {
-                    if ("" == row[itemNames[i]] || undefined == row[itemNames[i]]) {
+                    if (!self.inHideCols(itemNames[i]) && ("" == row[itemNames[i]] || undefined == row[itemNames[i]])) {
                         var msg = self.$m.find('input[name="' + itemNames[i] + '"]').parent().find("label").text();
                         w.layer.msg(msg + "不能为空");
                         return;
@@ -419,6 +443,10 @@
             });
         },
 
+        trace: function (msg, row) {
+            eBase.debug(msg + ":" + JSON.stringify(row));
+        },
+
         /**
          * 增加,修改
          * */
@@ -426,6 +454,9 @@
             var self = this;
 
             var url = self.addFlag ? self.cfg.addUrl : self.cfg.editUrl;
+            var msg = self.addFlag ? "添加接口参数" : "编辑接口参数";
+
+            self.trace("添加参数为：", row);
 
             eBase.send({'url': url, data: JSON.stringify(row)}).done(function () {
                 eBase.debug('[CURDTable.js][addItem][send success]');
@@ -441,6 +472,7 @@
 
         delItem: function (ids) {
             var self = this;
+            self.trace("删除参数：", ids);
             eBase.debug('[CURDTable.js][delItem]');
             eBase.send({'url': self.cfg.delUrl, data: JSON.stringify(ids)}).done(function () {
                 eBase.debug('[CURDTable.js][delItem][send success]');
@@ -455,4 +487,4 @@
 
     w.cur = CURDTable;
 
-})(window, $, layer);
+})(window, $, layer, laydate);

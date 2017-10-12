@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>太谷售电一体化平台 —— 开户</title>
+    <title>太谷售电一体化平台 —— 其他市场成员</title>
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -14,56 +14,58 @@
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-12">
+                <!-- Example Events -->
                 <div class="example-wrap">
-                    <h4 class="example-title">开户管理</h4>
+                    <h4 class="example-title">其他市场成员</h4>
                     <div class="example">
                         <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
-                            <button id="openAccount_addBtn" data-table="openAccountTable" type="button" title="新增客户"
+                            <button id="add" type="button" title="新增"
                                     class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
                                 <span>新增</span>
                             </button>
-                            <button id="openAccount_editBtn" data-table="openAccountTable" type="button"
-                                    class="btn btn-outline btn-default">
+                            <button id="edit" type="button" title="编辑" class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
                                 <span>编辑</span>
                             </button>
-                            <button id="openAccount_removeBtn" data-table="openAccountTable" type="button" title="删除客户"
+                            <button id="del" type="button" title="删除"
                                     class="btn btn-outline btn-default">
                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
                                 <span>删除</span>
                             </button>
                         </div>
-                        <table id="openAccountTable" data-height="700" data-mobile-responsive="true">
+                        <table id="TMember" data-height="700" data-mobile-responsive="true">
                             <thead>
                             <tr>
-                                <th data-field="state" data-id-field="id" data-checkbox="true"></th>
-                                <th data-field="id" data-id-field="id">id</th>
-                                <th data-field="uuid">市场成员统码</th>
+                                <th data-field="state" data-my="1" data-checkbox="true"></th>
+                                <th data-field="id">id</th>
+                                <th data-field="uuid">市场成员统一编码</th>
                                 <th data-field="alias">别名/简称</th>
-                                <th data-field="mkt_name">交易市场</th>
+                                <th data-field="mktId">交易市场</th>
                                 <th data-field="name">名称</th>
-                                <th data-field="mkt_type">市场成员类型</th>
+                                <th data-field="mktType">市场成员类型</th>
                                 <th data-field="addr">地理区域</th>
                                 <th data-field="postcode">邮政编码</th>
-                                <th data-field="corp_r">法人代表</th>
+                                <th data-field="corpR">法人代表</th>
                                 <th data-field="contact">常用联系人</th>
                                 <th data-field="tel">办公电话</th>
                                 <th data-field="mobi">手机号码</th>
                                 <th data-field="fax">传真号码</th>
                                 <th data-field="email">电子邮箱</th>
-                                <th data-field="open_bank">开户银行</th>
-                                <th data-field="open_name">开户名称</th>
-                                <th data-field="open_acc">开户帐号</th>
-                                <th data-field="m_addr">通信地址</th>
-                                <th data-field="reg_dt">注册时间</th>
-                                <th data-field="effect_dt">生效时间</th>
-                                <th data-field="exp_dt">失效时间</th>
+                                <th data-field="openBank">开户银行</th>
+                                <th data-field="openName">开户名称</th>
+                                <th data-field="openAcc">开户帐号</th>
+                                <th data-field="mAddr">通信地址</th>
+                                <th data-field="regDt">注册时间</th>
+                                <th data-field="effectDt">生效时间</th>
+                                <th data-field="expDt">失效时间</th>
+                                <th data-field="bValid">是否有效用户:0,无效;1,有效</th>
                             </tr>
                             </thead>
                         </table>
                     </div>
                 </div>
+                <!-- End Example Events -->
             </div>
         </div>
     </div>
@@ -77,6 +79,10 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
+                <div class="form-group hide">
+                    <label>id</label>
+                    <input type="text" class="form-control" name="id" placeholder="">
+                </div>
                 <div class="form-group">
                     <label>市场成员统一编码</label>
                     <input type="text" class="form-control" name="uuid" placeholder="">
@@ -86,6 +92,7 @@
                     <input type="text" class="form-control" name="alias" placeholder="">
                 </div>
                 <div class="form-group">
+                    <!--需要特殊处理-->
                     <label>交易市场</label>
                     <select id="mkt_name" class="form-control m-b" name="mkt_name">
                     </select>
@@ -96,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <label>市场成员类型</label>
-                    <input type="text" class="form-control" name="mkt_type" placeholder="">
+                    <input type="text" class="form-control" name="mktType" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>地理区域</label>
@@ -108,7 +115,7 @@
                 </div>
                 <div class="form-group">
                     <label>法人代表</label>
-                    <input type="text" class="form-control" name="corp_r" placeholder="">
+                    <input type="text" class="form-control" name="corpR" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>常用联系人</label>
@@ -132,31 +139,31 @@
                 </div>
                 <div class="form-group">
                     <label>开户银行</label>
-                    <input type="text" class="form-control" name="open_bank" placeholder="">
+                    <input type="text" class="form-control" name="openBank" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>开户名称</label>
-                    <input type="text" class="form-control" name="open_name" placeholder="">
+                    <input type="text" class="form-control" name="openName" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>开户帐号</label>
-                    <input type="text" class="form-control" name="open_acc" placeholder="">
+                    <input type="text" class="form-control" name="openAcc" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>通信地址</label>
-                    <input type="text" class="form-control" name="m_addr" placeholder="">
+                    <input type="text" class="form-control" name="mAddr" placeholder="">
                 </div>
                 <div class="form-group">
                     <label>注册时间</label>
-                    <input id="reg_dt" type="text" class="form-control laydate-icon layer-date">
+                    <input id="regDt" type="text" name="regDt" class="form-control laydate-icon layer-date">
                 </div>
                 <div class="form-group">
                     <label>生效时间</label>
-                    <input id="effect_dt" type="text" class="form-control laydate-icon layer-date">
+                    <input id="effectDt" type="text" name="effectDt" class="form-control laydate-icon layer-date">
                 </div>
                 <div class="form-group">
                     <label>失效时间</label>
-                    <input id="exp_dt" type="text" class="form-control laydate-icon layer-date">
+                    <input id="expDt" type="text" name="expDt" class="form-control laydate-icon layer-date">
                 </div>
             </div>
             <div class="modal-footer">
@@ -173,31 +180,16 @@
 <script src="js/pages/CURDTable.js"></script>
 <script>
 
-    laydate({elem: "#reg_dt", event: "focus"});
-    laydate({elem: "#effect_dt", event: "focus"});
-    laydate({elem: "#exp_dt", event: "focus"});
-
     new cur({
-        t: "#openAccountTable",//操作表的ID
-        m:"#modal",
-        uuid: "CId",//主键
-        child:[{
-            el:"#mkt_name",
-            url:"http://localhost:8080/Long/add",
-            showfield:"mkt_name",
-            idfield:"mkt_id",
-            type:"select",
-            net:'true'
-        }],
-        hideCols:["id"],
-        queryUrl: "js/demo/customer.json",
+        t: "#TMember",
+        m: "#modal",
+        uuid: "id",
+        hideCols:["id","bValid"],
+        dataInputs:["#regDt","#effectDt","#expDt"],
+        queryUrl: "js/demo/oMember.json",
         addUrl: "http://localhost:8080/Long/add",
-        editUrl:"http://localhost:8080/Long/edit",
-        delUrl: "http://localhost:8080/Long/del",
-        toolbar: "#exampleTableEventsToolbar",
-        addBtn: "#openAccount_addBtn",
-        editBtn: "#openAccount_editBtn",
-        delBtn: "#openAccount_removeBtn"
+        editUrl: "http://localhost:8080/Long/edit",
+        delUrl: "http://localhost:8080/Long/del"
     }).init();
 
 </script>

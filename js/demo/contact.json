@@ -1,16 +1,14 @@
 [
   {
-    "id" : "01",
-    "uuid" : "1234-5678",
-    "parentId" : "02",
-    "mktLevel" : "1",
-    "name" : "国网电力",
-    "mktDesc" : "描述",
-    "effectDt" : "2017-02-03",
-    "expDt" : "2020-02-03",
-    "orderNum" : "1",
-    "updateTime" : "2017-10-20",
-    "authorId" : "0001"
+    "id":"id",
+    "ppinfoId":"所属用户",
+    "jobTitle":"联系人类型",
+    "addr":"联系地址",
+    "postcode":"邮编",
+    "name":"联系人",
+    "tel":"联系人固定电话",
+    "mobi":"联系人移动电话",
+    "email":"联系人电子邮件联系人移动电话"
   },
   {
     "id" : "02",
