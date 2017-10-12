@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be9a42e2-126c-4430-a387-8d47fe30ea7f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/pages/CURDTable.js" afterPath="$PROJECT_DIR$/js/pages/CURDTable.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customInfo.html" afterPath="$PROJECT_DIR$/customInfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/demo/customer.json" afterPath="$PROJECT_DIR$/js/demo/customer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/import.js" afterPath="$PROJECT_DIR$/js/import.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="SmallPower.iws" />
@@ -25,30 +24,14 @@
     <favorites_list name="SmallPower" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7987202">
+    <splitter split-orientation="horizontal" split-proportion="0.8563118">
       <split-first>
         <leaf>
-          <file leaf-file-name="customInfo.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/customInfo.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-11.3125">
-                  <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
-                  <folding>
-                    <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                    <marker date="1507805827766" expanded="true" signature="5852:6175" placeholder="..." />
-                    <marker date="1507805827766" expanded="true" signature="5852:6203" placeholder="..." />
-                    <marker date="1507805827766" expanded="true" signature="5944:6014" placeholder="..." />
-                    <marker date="1507805827766" expanded="true" signature="6104:6175" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.02900232">
-                  <caret line="67" column="66" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
+                <state vertical-scroll-proportion="0.62296987">
+                  <caret line="258" column="30" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -61,8 +44,8 @@
           <file leaf-file-name="CURDTable.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/pages/CURDTable.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-0.111856826">
-                  <caret line="98" column="24" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
+                <state vertical-scroll-proportion="0.7483221">
+                  <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -129,7 +112,6 @@
         <option value="$PROJECT_DIR$/js/demo/treeview-demo.min.js" />
         <option value="$PROJECT_DIR$/js/demo/customer2.json" />
         <option value="$PROJECT_DIR$/js/dateStart.js" />
-        <option value="$PROJECT_DIR$/js/import.js" />
         <option value="$PROJECT_DIR$/js/plugins/layer/laydate/need/laydate.css" />
         <option value="$PROJECT_DIR$/js/demo/market.json" />
         <option value="$PROJECT_DIR$/css/style.min862f.css" />
@@ -142,10 +124,11 @@
         <option value="$PROJECT_DIR$/temp.txt" />
         <option value="$PROJECT_DIR$/contactOfSalePoint.html" />
         <option value="$PROJECT_DIR$/pointManager.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/pages/CURDTable.js" />
         <option value="$PROJECT_DIR$/js/demo/customer.json" />
+        <option value="$PROJECT_DIR$/js/import.js" />
         <option value="$PROJECT_DIR$/customInfo.html" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -258,6 +241,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\tools\tomcat-7.0.65\webapps\SmallPower\js" />
       <recent name="E:\tools\tomcat-7.0.65\webapps\SmallPower" />
       <recent name="E:\tools\tomcat-7.0.65\webapps\SmallPower\js\demo" />
       <recent name="E:\tools\tomcat-7.0.65\webapps\SmallPower\js\pages" />
@@ -317,7 +301,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10281837" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -357,13 +341,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/collectPriceManager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.34375">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/consultManager.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.34375">
@@ -579,14 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/contabs.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/demo/contack.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2025463">
@@ -599,14 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.71875">
           <caret line="133" column="36" selection-start-line="133" selection-start-column="36" selection-end-line="133" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/import.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46868008">
-          <caret line="41" column="7" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -640,8 +601,7 @@
         <state vertical-scroll-proportion="-7.8125">
           <caret line="112" column="22" selection-start-line="112" selection-start-column="22" selection-end-line="112" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -658,14 +618,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-20.3125">
           <caret line="26" column="1" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/openAccount.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.96875">
-          <caret line="193" column="49" selection-start-line="193" selection-start-column="49" selection-end-line="193" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -694,14 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pointManager.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8125">
-          <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/demo/contact.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2900232">
@@ -720,30 +664,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/pages/CURDTable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.111856826">
-          <caret line="98" column="24" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.7483221">
+          <caret line="496" column="0" selection-start-line="496" selection-start-column="0" selection-end-line="496" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/import.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="34" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/contabs.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.115385">
+          <caret line="124" column="36" selection-start-line="124" selection-start-column="36" selection-end-line="124" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/customInfo.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.3125">
-          <caret line="139" column="25" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+        <state vertical-scroll-proportion="-6.625">
+          <caret line="127" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1507805827766" expanded="true" signature="5852:6175" placeholder="..." />
-            <marker date="1507805827766" expanded="true" signature="5852:6203" placeholder="..." />
-            <marker date="1507805827766" expanded="true" signature="5944:6014" placeholder="..." />
-            <marker date="1507805827766" expanded="true" signature="6104:6175" placeholder="..." />
+            <marker date="1507809252841" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1507809252841" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1507809252841" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1507809252841" expanded="true" signature="-1:-1" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pointManager.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-92.1875">
+          <caret line="118" column="0" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/contabsinner.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/openAccount.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92111367">
+          <caret line="192" column="35" selection-start-line="192" selection-start-column="27" selection-end-line="192" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02900232">
-          <caret line="67" column="66" selection-start-line="67" selection-start-column="66" selection-end-line="67" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.62296987">
+          <caret line="258" column="30" selection-start-line="258" selection-start-column="30" selection-end-line="258" selection-end-column="30" />
           <folding />
         </state>
       </provider>

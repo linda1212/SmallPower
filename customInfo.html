@@ -120,13 +120,17 @@
 <script src="js/import.js"></script>
 <script src="js/pages/CURDTable.js"></script>
 <script>
+    function mgrpClick(){
+        window.parent.trigePoint();
+    }
 
     function actionFormatter(value, row, index) {
+
         var result = '<div class="btn-group hidden-xs" id="actionbar" role="group">\
-                    <button id="detail" type="button" class="btn btn-outline btn-default">\
+                    <a href="pointManager.html?id=1" class="btn btn-outline btn-default">\
                     <span>查看详情</span>\
-                    </button>\
-                    <button id="mgrp" type="button" class="btn btn-outline btn-default">\
+                    </a>\
+                    <button onclick="mgrpClick()" class="btn btn-outline btn-default">\
                     <span>管理售电点</span>\
                     </button>\
                     </div>';

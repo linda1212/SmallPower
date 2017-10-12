@@ -68,17 +68,11 @@
                                 <a class="J_menuItem" href="customInfo.html">用电客户信息</a>
                             </li>
                             <li>
-                                <a class="J_menuItem" href="pointManager.html">售电点管理</a>
+                                <a id="pointlink" class="J_menuItem" href="pointManager.html">售电点管理</a>
                             </li>
-                            <!-- <li>
-                                <a class="J_menuItem" href="customFullview.html">电力客户全景视图</a>
-                            </li>-->
                             <li>
                                 <a class="J_menuItem" href="otherMktMember.html">其他市场成员</a>
                             </li>
-                            <!--<li>
-                                <a class="J_menuItem" href="generatorInfo.html">发电商信息</a>
-                            </li>-->
                             <li>
                                 <a class="J_menuItem" href="marketManager.html">交易市场管理</a>
                             </li>
@@ -259,6 +253,14 @@
     <script src="js/plugins/echarts/echarts-all.js"></script>
     <script src="js/demo/echarts-demo.min.js"></script>
     <script src="js/plugins/layer/layer.min.js"></script>
+
+    <script>
+
+        function trigePoint(){
+            $("#pointlink").click();
+        }
+
+    </script>
 </body>
 
 </html>

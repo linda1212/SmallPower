@@ -23,9 +23,9 @@ window.jsConfig = {
         url: 'plugins/dataTables/dataTables.bootstrap.js'
     }, {
         url: 'plugins/bootstrap-table/bootstrap-table.min.js'
-    },{
+    }, {
         url: 'plugins/bootstrap-table/bootstrap-table-mobile.min.js'
-    },{
+    }, {
         url: 'plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js'
     }, {
         url: '/demo/bootstrap-table-demo.min.js'
@@ -36,9 +36,11 @@ window.jsConfig = {
         url: 'plugins/layer/layer.min.js'
     }, {
         url: 'demo/layer-demo.min.js'
-    },{
+    }, {
         //date
-        url: 'plugins/layer/laydate/laydate.js'
+        url: 'plugins/layer/laydate/laydate.js',
+    }, {
+        url: 'contabsinner.min.js'
     }],
 
     importJSFilesByList: function (list) {
