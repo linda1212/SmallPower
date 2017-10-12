@@ -16,7 +16,7 @@
             <div class="col-sm-12">
                 <!-- Example Events -->
                 <div class="example-wrap">
-                    <h4 class="example-title">其他市场成员</h4>
+                    <h3 class="example-title">其他市场成员</h3>
                     <div class="example">
                         <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
                             <button id="add" type="button" title="新增"
@@ -34,6 +34,29 @@
                                 <span>删除</span>
                             </button>
                         </div>
+
+                        <div class="btn-group hidden-xs tbar" style="margin-left:20px;" role="group">
+                            <button type="button"
+                                    class="btn btn-outline btn-link">
+                                <span>请选择成员类型:</span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-outline btn-default">
+                                <span>售电商</span>
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default">
+                                <span>输电商</span>
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default">
+                                <span>配电商</span>
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default">
+                                <span>发电商</span>
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default">
+                                <span>交易机构</span>
+                            </button>
+                        </div>
                         <table id="TMember" data-height="700" data-mobile-responsive="true">
                             <thead>
                             <tr>
@@ -42,6 +65,7 @@
                                 <th data-field="uuid">市场成员统一编码</th>
                                 <th data-field="alias">别名/简称</th>
                                 <th data-field="mktId">交易市场</th>
+                                <th data-field="mktName">交易市场名称</th>
                                 <th data-field="name">名称</th>
                                 <th data-field="mktType">市场成员类型</th>
                                 <th data-field="addr">地理区域</th>
@@ -91,11 +115,18 @@
                     <label>别名/简称</label>
                     <input type="text" class="form-control" name="alias" placeholder="">
                 </div>
+                <div class="form-group hide">
+                    <label>交易市场ID</label>
+                    <input type="text" class="form-control" name="mktId" placeholder="" value="0001">
+                </div>
                 <div class="form-group">
                     <!--需要特殊处理-->
-                    <label>交易市场</label>
-                    <select id="mkt_name" class="form-control m-b" name="mkt_name">
-                    </select>
+                    <label>交易市场名称</label>
+                    <input style="background-color: #EEEEEE;" disabled="disabled"
+                           type="text" class="form-control" name="mktName" value="江苏国网电力" placeholder="江苏国网电力">
+                    <!--<select style="background-color: #EEEEEE;" disabled="disabled" id="mktName" class="form-control m-b" name="mktName">
+                        <option selected="selected" value="0001">江苏国网电力</option>
+                    </select>-->
                 </div>
                 <div class="form-group">
                     <label>名称</label>
@@ -184,12 +215,15 @@
         t: "#TMember",
         m: "#modal",
         uuid: "id",
-        hideCols:["id","bValid"],
+        hideCols:["id","mktId","bValid","alias","corpR","tel","fax","email","openBank","openAcc"],
         dataInputs:["#regDt","#effectDt","#expDt"],
         queryUrl: "js/demo/oMember.json",
         addUrl: "http://localhost:8080/Long/add",
         editUrl: "http://localhost:8080/Long/edit",
-        delUrl: "http://localhost:8080/Long/del"
+        delUrl: "http://localhost:8080/Long/del",
+        addBtn: "#add",
+        editBtn: "#edit",
+        delBtn: "#del"
     }).init();
 
 </script>

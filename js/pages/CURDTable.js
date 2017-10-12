@@ -4,16 +4,16 @@
 
     function CURDTable(value) {
 
-        this.cfg = $.extend(value, {
+        this.cfg = $.extend({
             maxheight: 800,
             toolbar: "#exampleTableEventsToolbar",
             editTitle: "编辑",
             addTitle: "增加",
-            confirmMsg: "确定删除此条数据?",
-            addBtn: "#add",
-            editBtn: "#edit",
-            delBtn: "#del"
-        });
+            confirmMsg: "确定删除此条数据?"
+            /*addBtn: "#add",
+             editBtn: "#edit",
+             delBtn: "#del"*/
+        }, value);
 
         this.addFlag = true;
 
@@ -53,6 +53,17 @@
                 pageIndex: params.pageNumber
             };
             return result;
+        },
+
+        initDateInput: function () {
+            var self = this;
+
+            if(self.cfg.dataInputs && self.cfg.dataInputs.length > 0){
+                for (var i = 0; i < self.cfg.dataInputs.length; i++) {
+                    var item = self.cfg.dataInputs[i];
+                    d({elem: item, event: "focus"});
+                }
+            }
         },
 
         initModelData: function () {
@@ -144,6 +155,7 @@
             self.$m = $(self.cfg.m).modal({show: false});
 
             self.initHideCols(self.$t);
+            self.initDateInput();
 
             return;
 
@@ -293,13 +305,13 @@
                     row[$(this).attr('name')] = $(this).val();
                 });
 
-                for (var i = 0; i < itemNames.length; i++) {
+                /*for (var i = 0; i < itemNames.length; i++) {
                     if (!self.inHideCols(itemNames[i]) && ("" == row[itemNames[i]] || undefined == row[itemNames[i]])) {
                         var msg = self.$m.find('input[name="' + itemNames[i] + '"]').parent().find("label").text();
                         w.layer.msg(msg + "不能为空");
                         return;
                     }
-                }
+                }*/
 
                 self.addItem(row);
             });

@@ -7514,4 +7514,25 @@ body.skin-3 {
     display: none;
 }
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    display: block clear : both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    font-size: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
 /*自研化结束*/

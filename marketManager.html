@@ -16,8 +16,7 @@
             <div class="col-sm-12">
                 <!-- Example Events -->
                 <div class="example-wrap">
-                    <h4 class="example-title">交易市场管理</h4>
-
+                    <h3 class="example-title">交易市场管理</h3>
                     <div class="example">
                         <div class="btn-group hidden-xs tbar" id="exampleTableEventsToolbar" role="group">
                             <button id="BMAdd" data-table="TMarket" type="button" title="新增客户"
@@ -130,15 +129,12 @@
 <script src="js/pages/CURDTable.js"></script>
 <script>
 
-    laydate({elem: "#effectDt", event: "focus"});
-    laydate({elem: "#expDt", event: "focus"});
-    laydate({elem: "#updateTime", event: "focus"});
-
     new cur({
         t: "#TMarket",
         m: "#modal",
         uuid: "id",
         hideCols:["id","id2"],
+        dataInputs:["#effectDt","#expDt","#updateTime"],
         queryUrl: "js/demo/market.json",
         addUrl: "http://localhost:8080/Long/add",
         editUrl: "http://localhost:8080/Long/edit",

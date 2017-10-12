@@ -139,9 +139,9 @@
 <script src="js/pages/CURDTable.js"></script>
 <script>
 
-    laydate({elem: "#effectDt", event: "focus"});
+/*    laydate({elem: "#effectDt", event: "focus"});
     laydate({elem: "#expDt", event: "focus"});
-    laydate({elem: "#updateTime", event: "focus"});
+    laydate({elem: "#updateTime", event: "focus"});*/
 
     new cur({
         t: "#TContact",
@@ -153,7 +153,10 @@
         addUrl: "http://localhost:8080/Long/add",
         editUrl: "http://localhost:8080/Long/edit",
         delUrl: "http://localhost:8080/Long/del",
-        toolbar: "#exampleTableEventsToolbar"
+        toolbar: "#exampleTableEventsToolbar",
+        addBtn: "#add",
+        editBtn: "#edit",
+        delBtn: "#del"
     }).init();
 
 </script>
