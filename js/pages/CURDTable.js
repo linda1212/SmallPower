@@ -55,10 +55,10 @@
         initDateInput: function () {
             var self = this;
 
-            if(self.cfg.dataInputs && self.cfg.dataInputs.length > 0){
+            if (self.cfg.dataInputs && self.cfg.dataInputs.length > 0) {
                 for (var i = 0; i < self.cfg.dataInputs.length; i++) {
                     var item = self.cfg.dataInputs[i];
-                    if($(item)){
+                    if ($(item)) {
                         d({elem: item, event: "focus"});
                     }
                 }
@@ -106,8 +106,8 @@
             }];
 
             for (var i = 0; i < list.length; i++) {
-                var otxt = list[i][self.cobj.showfield];
-                $(self.cobj.el).append("<option value='" + list[i][self.cobj.idfield] + "'>" + otxt + "</option>")
+                var otxt = list[i][self.cobj.valField];
+                $(self.cobj.el).append("<option value='" + list[i][self.cobj.keyField] + "'>" + otxt + "</option>")
             }
 
             $(self.cobj.el).val("");
@@ -156,6 +156,7 @@
 
             self.initHideCols(self.$t);
             self.initDateInput();
+            self.initChildEvent();
 
             return;
 
@@ -229,15 +230,55 @@
 
             this.$m.data('id', row.id);
             self.$m.find('.modal-title').text(title);
-            for (var name in row) {
-                self.$m.find('input[name="' + name + '"]').val(row[name]);
-                //self.$m.find('select[name="' + name + '"]').find("option[text='" + row[name] + "']").attr("selected", true);
-                //var temp = self.$m.find('select[name="' + name + '"]');
-                //var temp2 = temp.find("option[text='" + row[name] + "']").attr("selected", true);
-                //var temp2 = temp.find("option:contains('" + row[name] + "')']");
-                //var tempxxx = "xxxx";
+            for (var key in row) {
+                self.$m.find('input[name="' + key + '"]').val(row[key]);
+
+                var item = self.inClildKeyFiled(key);
+                item && self.checkValue(item['el'], row[key]);
             }
             self.$m.modal('show');
+        },
+
+        initChildEvent: function () {
+            var self = this;
+            if (!self.cfg.child || self.cfg.child.length == 0) return;
+            for (var i = 0; i < self.cfg.child.length; i++) {
+                var item = self.cfg.child[i]
+                var el = item['el'];
+                $(el).change(function () {
+                    var it = self.findElByID('#' + $(this).attr('id'));
+                    if (it) {
+                        var sv = $(it['el']).find("option:selected").val();
+                        self.$m.find('input[name="' + it['keyField'] + '"]').val(sv);
+                    }
+                });
+            }
+        },
+
+        findElByID: function (el) {
+            var self = this;
+            if (!self.cfg.child || self.cfg.child.length == 0) return null;
+            for (var i = 0; i < self.cfg.child.length; i++) {
+                var elm = self.cfg.child[i]['el'];
+                if (elm === el) {
+                    return self.cfg.child[i];
+                }
+            }
+
+            return null;
+        },
+
+        inClildKeyFiled: function (key) {
+            var self = this;
+            if (!self.cfg.child || self.cfg.child.length == 0) return null;
+            for (var i = 0; i < self.cfg.child.length; i++) {
+                var keyf = self.cfg.child[i]['keyField'];
+                if (key === keyf) {
+                    return self.cfg.child[i];
+                }
+            }
+
+            return null;
         },
 
         addButtonListeners: function () {
@@ -346,7 +387,7 @@
                 area: [pw, ph],
                 shift: 2,
                 shadeClose: !0,
-                content: '<div id="app_layer_box"></div><div id="app_btn_box" class="row"></div>',
+                content: '<div id="app_layer_box"></div><div id="app_btn_box" class="row"></div>'
             });
 
             var wrap = $('<div id="contentBox" class="row form-horizontal m-t"></div>');
@@ -395,8 +436,8 @@
 
             var sendData = {};
 
-            for (var i = 0; i < input_ids.length; i++) {
-                sendData[input_ids[i]] = $('#' + input_ids[i]).val();
+            for (var j = 0; j < input_ids.length; j++) {
+                sendData[input_ids[j]] = $('#' + input_ids[j]).val();
             }
 
             $('#layer_OK_Button').click(function () {
@@ -464,9 +505,9 @@
             var self = this;
 
             var url = self.addFlag ? self.cfg.addUrl : self.cfg.editUrl;
-            var msg = self.addFlag ? "添加接口参数" : "编辑接口参数";
+            var msg = self.addFlag ? "添加--参数为：" : "编辑--口参数为：";
 
-            self.trace("添加参数为：", row);
+            self.trace(msg, row);
 
             eBase.send({'url': url, data: JSON.stringify(row)}).done(function () {
                 eBase.debug('[CURDTable.js][addItem][send success]');
@@ -492,8 +533,27 @@
                 eBase.debug('[CURDTable.js][delItem][send failed]');
                 w.layer.msg('删除失败');
             });
+        },
+
+        unuse: function (el) {
+            $(el).attr("disabled", true);
+        },
+
+        checkValue: function (el, val) {
+            $(el).val(val);
+        },
+
+        checkText: function (el, txt) {
+            txt = txt || '';
+            $(el).find("option").each(function () {
+                alert($(this).text());
+                if (text && txt === $(this).text()) {
+                    $(el).val($(this).val());
+                }
+            });
         }
     };
+
 
     w.cur = CURDTable;
 

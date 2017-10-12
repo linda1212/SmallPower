@@ -7,70 +7,90 @@
 </head>
 <body>
 
-<div class="layui-layer layui-anim-02 layui-layer-page layui-layer-demo" id="layui-layer1" type="page" times="1"
-     showtime="0" contype="string" style="z-index: 19891015; width: 350px; top: 203.5px; left: 209.5px;">
-    <div class="layui-layer-title" style="cursor: move;" move="ok">信息</div>
-    <div class="layui-layer-content">
-        <div id="app_layer_box">
-            <div id="contentBox" class="row form-horizontal m-t"
-                 style="padding:0 20px 0 20px;box-sizing: content-box;">
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">客户编号</label>
-
-                        <div class="col-sm-9"><input type="text" id="custom_id" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">客户名称</label>
-
-                        <div class="col-sm-9"><input type="text" id="custom_name" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">简称</label>
-
-                        <div class="col-sm-9"><input type="text" id="cusotm_sname" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">地址</label>
-
-                        <div class="col-sm-9"><input type="text" id="custom_address" class="form-control"
-                                                     placeholder=""></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">联系人</label>
-                        <div class="col-sm-9">
-                            <input type="text" id="custom_contact" class="form-control"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group"><label class="col-sm-3 control-label">联系电话</label>
-
-                        <div class="col-sm-9"><input type="text" id="custom_tel" class="form-control" placeholder="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="app_btn_box" class="row">
-            <div class="col-sm-6">
-                <button id="layer_OK_Button" class="btn btn-white ci_btn_margin_bottom0" type="button">查询</button>
-            </div>
-            <div class="col-sm-6">
-                <button id="layer_Cancel_Button" class="btn btn-white ci_btn_margin_bottom0" type="button">新增</button>
-            </div>
-        </div>
-    </div>
-    <!--<span class="layui-layer-setwin">-->
-        <!--<a class="layui-layer-ico layui-layer-close layui-layer-closetrue" href="javascript:;"></a>-->
-    <!--</span>-->
+<div class="btn-group" role="group">
+    <button id="add" data-table="openAccountTable" type="button" title="新增客户"
+            class="btn btn-outline btn-default">
+        <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+        <span>根据index选择默认</span>
+    </button>
+    <button id="edit" data-table="openAccountTable" type="button"
+            class="btn btn-outline btn-default">
+        <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+        <span>根据value设置选中</span>
+    </button>
+    <button id="del" data-table="openAccountTable" type="button" title="删除客户"
+            class="btn btn-outline btn-default">
+        <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+        <span>根据text设置选中</span>
+    </button>
 </div>
 
+<div class="row">
+    <div class="col-sm-9">
+        <select id="s" class="form-control"></select>
+    </div>
+</div>
+
+<script src="js/import.js"></script>
+<script src="js/pages/CURDTable.js"></script>
+<script>
+
+    function i(list) {
+        list = list || [{
+                    key: "01",
+                    value: "类型1"
+                }, {
+                    key: "02",
+                    value: "类型2"
+                }, {
+                    key: "03",
+                    value: "类型3"
+                }];
+
+        for (var i = 0; i < list.length; i++) {
+            var key = list[i]['key'];
+            var otxt = list[i]['value'];
+            $("#s").append("<option value='" + key + "'>" + otxt + "</option>")
+        }
+    }
+
+    window.onload = function () {
+        //alert("ready");
+        i();
+    }
+
+    $("#add").click(function () {
+        //根据index选择默认
+        //$('#s').find
+    });
+
+    $("#edit").click(function () {
+        $('#s').val('02');
+        show();
+    });
+
+    $("#del").click(function () {
+        var text = "类型3";
+        $("#s").find("option").each(function(){
+            alert($(this).text());
+            if(text === $(this).text()){
+                var val = $(this).val();
+                $('#s').val($(this).val());
+            }
+        });
+        show();
+
+    });
+
+    function show(){
+        var v = $("#s").find("option:selected").text();
+        alert(' 选中为：' + v);
+    }
+
+
+
+</script>
+
 </body>
+
 </html>

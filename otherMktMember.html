@@ -117,16 +117,20 @@
                 </div>
                 <div class="form-group hide">
                     <label>交易市场ID</label>
-                    <input type="text" class="form-control" name="mktId" placeholder="" value="0001">
+                    <input type="text" class="form-control" name="mktId" placeholder="">
                 </div>
                 <div class="form-group">
-                    <!--需要特殊处理-->
                     <label>交易市场名称</label>
-                    <input style="background-color: #EEEEEE;" disabled="disabled"
-                           type="text" class="form-control" name="mktName" value="江苏国网电力" placeholder="江苏国网电力">
-                    <!--<select style="background-color: #EEEEEE;" disabled="disabled" id="mktName" class="form-control m-b" name="mktName">
-                        <option selected="selected" value="0001">江苏国网电力</option>
-                    </select>-->
+                    <select id="mktName" class="form-control m-b" name="mktName">
+                        <option value="" style="display: none">请选择交易市场</option>
+                        <option selected="selected" value="017">国网总部</option>
+                        <option value="02">国网江苏电力</option>
+                        <option value="03">国网苏州电力</option>
+                        <option value="04">国网南京电力</option>
+                        <option value="05">国网安徽电力</option>
+                        <option value="06">国网宁夏电力</option>
+                        <option value="07">国网黑龙江电力</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>名称</label>
@@ -216,6 +220,13 @@
         m: "#modal",
         uuid: "id",
         hideCols:["id","mktId","bValid","alias","corpR","tel","fax","email","openBank","openAcc"],
+        child:[{
+            iid:'sl1',
+            el:'#mktName',
+            url:'http://localhost:8080/Long/url',
+            keyField:'mktId',
+            valField:'mktName'
+        }],
         dataInputs:["#regDt","#effectDt","#expDt"],
         queryUrl: "js/demo/oMember.json",
         addUrl: "http://localhost:8080/Long/add",
